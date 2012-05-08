@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CFA90579155899320022EEE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA90578155899320022EEE0 /* UIKit.framework */; };
+		CFA9057B155899320022EEE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA9057A155899320022EEE0 /* Foundation.framework */; };
+		CFA9057D155899320022EEE0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA9057C155899320022EEE0 /* CoreGraphics.framework */; };
+		CFA90583155899320022EEE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFA90581155899320022EEE0 /* InfoPlist.strings */; };
+		CFA90585155899320022EEE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA90584155899320022EEE0 /* main.m */; };
+		CFA90589155899320022EEE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA90588155899320022EEE0 /* AppDelegate.m */; };
+		CFA9058C155899320022EEE0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA9058B155899320022EEE0 /* ViewController.m */; };
+		CFA9058F155899320022EEE0 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA9058D155899320022EEE0 /* ViewController_iPhone.xib */; };
+		CFA90592155899320022EEE0 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA90590155899320022EEE0 /* ViewController_iPad.xib */; };
+		CFA9059A155899320022EEE0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA90599155899320022EEE0 /* SenTestingKit.framework */; };
+		CFA9059B155899320022EEE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA90578155899320022EEE0 /* UIKit.framework */; };
+		CFA9059C155899320022EEE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA9057A155899320022EEE0 /* Foundation.framework */; };
+		CFA905A4155899330022EEE0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFA905A2155899330022EEE0 /* InfoPlist.strings */; };
+		CFA905A7155899330022EEE0 /* HelloSpireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA905A6155899330022EEE0 /* HelloSpireTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CFA9059D155899320022EEE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFA9056B155899320022EEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CFA90573155899320022EEE0;
+			remoteInfo = HelloSpire;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CFA90574155899320022EEE0 /* HelloSpire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSpire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA90578155899320022EEE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CFA9057A155899320022EEE0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CFA9057C155899320022EEE0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CFA90580155899320022EEE0 /* HelloSpire-Info.plist */ = {isa = PBXFileReference; path = "HelloSpire-Info.plist"; sourceTree = "<group>"; };
+		CFA90582155899320022EEE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFA90584155899320022EEE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CFA90586155899320022EEE0 /* HelloSpire-Prefix.pch */ = {isa = PBXFileReference; path = "HelloSpire-Prefix.pch"; sourceTree = "<group>"; };
+		CFA90587155899320022EEE0 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		CFA90588155899320022EEE0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CFA9058A155899320022EEE0 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		CFA9058B155899320022EEE0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CFA9058E155899320022EEE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		CFA90591155899320022EEE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		CFA90598155899320022EEE0 /* HelloSpireTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloSpireTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA90599155899320022EEE0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CFA905A1155899330022EEE0 /* HelloSpireTests-Info.plist */ = {isa = PBXFileReference; path = "HelloSpireTests-Info.plist"; sourceTree = "<group>"; };
+		CFA905A3155899330022EEE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFA905A5155899330022EEE0 /* HelloSpireTests.h */ = {isa = PBXFileReference; path = HelloSpireTests.h; sourceTree = "<group>"; };
+		CFA905A6155899330022EEE0 /* HelloSpireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloSpireTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CFA90571155899320022EEE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA90579155899320022EEE0 /* UIKit.framework in Frameworks */,
+				CFA9057B155899320022EEE0 /* Foundation.framework in Frameworks */,
+				CFA9057D155899320022EEE0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA90594155899320022EEE0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA9059A155899320022EEE0 /* SenTestingKit.framework in Frameworks */,
+				CFA9059B155899320022EEE0 /* UIKit.framework in Frameworks */,
+				CFA9059C155899320022EEE0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CFA90569155899320022EEE0 = {
+			isa = PBXGroup;
+			children = (
+				CFA9057E155899320022EEE0 /* HelloSpire */,
+				CFA9059F155899320022EEE0 /* HelloSpireTests */,
+				CFA90577155899320022EEE0 /* Frameworks */,
+				CFA90575155899320022EEE0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CFA90575155899320022EEE0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CFA90574155899320022EEE0 /* HelloSpire.app */,
+				CFA90598155899320022EEE0 /* HelloSpireTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CFA90577155899320022EEE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CFA90578155899320022EEE0 /* UIKit.framework */,
+				CFA9057A155899320022EEE0 /* Foundation.framework */,
+				CFA9057C155899320022EEE0 /* CoreGraphics.framework */,
+				CFA90599155899320022EEE0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFA9057E155899320022EEE0 /* HelloSpire */ = {
+			isa = PBXGroup;
+			children = (
+				CFA90587155899320022EEE0 /* AppDelegate.h */,
+				CFA90588155899320022EEE0 /* AppDelegate.m */,
+				CFA9058A155899320022EEE0 /* ViewController.h */,
+				CFA9058B155899320022EEE0 /* ViewController.m */,
+				CFA9058D155899320022EEE0 /* ViewController_iPhone.xib */,
+				CFA90590155899320022EEE0 /* ViewController_iPad.xib */,
+				CFA9057F155899320022EEE0 /* Supporting Files */,
+			);
+			path = HelloSpire;
+			sourceTree = "<group>";
+		};
+		CFA9057F155899320022EEE0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFA90580155899320022EEE0 /* HelloSpire-Info.plist */,
+				CFA90581155899320022EEE0 /* InfoPlist.strings */,
+				CFA90584155899320022EEE0 /* main.m */,
+				CFA90586155899320022EEE0 /* HelloSpire-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFA9059F155899320022EEE0 /* HelloSpireTests */ = {
+			isa = PBXGroup;
+			children = (
+				CFA905A5155899330022EEE0 /* HelloSpireTests.h */,
+				CFA905A6155899330022EEE0 /* HelloSpireTests.m */,
+				CFA905A0155899330022EEE0 /* Supporting Files */,
+			);
+			path = HelloSpireTests;
+			sourceTree = "<group>";
+		};
+		CFA905A0155899330022EEE0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFA905A1155899330022EEE0 /* HelloSpireTests-Info.plist */,
+				CFA905A2155899330022EEE0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CFA90573155899320022EEE0 /* HelloSpire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFA905AA155899330022EEE0 /* Build configuration list for PBXNativeTarget "HelloSpire" */;
+			buildPhases = (
+				CFA90570155899320022EEE0 /* Sources */,
+				CFA90571155899320022EEE0 /* Frameworks */,
+				CFA90572155899320022EEE0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelloSpire;
+			productName = HelloSpire;
+			productReference = CFA90574155899320022EEE0 /* HelloSpire.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CFA90597155899320022EEE0 /* HelloSpireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFA905AD155899330022EEE0 /* Build configuration list for PBXNativeTarget "HelloSpireTests" */;
+			buildPhases = (
+				CFA90593155899320022EEE0 /* Sources */,
+				CFA90594155899320022EEE0 /* Frameworks */,
+				CFA90595155899320022EEE0 /* Resources */,
+				CFA90596155899320022EEE0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CFA9059E155899320022EEE0 /* PBXTargetDependency */,
+			);
+			name = HelloSpireTests;
+			productName = HelloSpireTests;
+			productReference = CFA90598155899320022EEE0 /* HelloSpireTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CFA9056B155899320022EEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = CFA9056E155899320022EEE0 /* Build configuration list for PBXProject "HelloSpire" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CFA90569155899320022EEE0;
+			productRefGroup = CFA90575155899320022EEE0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CFA90573155899320022EEE0 /* HelloSpire */,
+				CFA90597155899320022EEE0 /* HelloSpireTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CFA90572155899320022EEE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA90583155899320022EEE0 /* InfoPlist.strings in Resources */,
+				CFA9058F155899320022EEE0 /* ViewController_iPhone.xib in Resources */,
+				CFA90592155899320022EEE0 /* ViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA90595155899320022EEE0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA905A4155899330022EEE0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CFA90596155899320022EEE0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CFA90570155899320022EEE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA90585155899320022EEE0 /* main.m in Sources */,
+				CFA90589155899320022EEE0 /* AppDelegate.m in Sources */,
+				CFA9058C155899320022EEE0 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFA90593155899320022EEE0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA905A7155899330022EEE0 /* HelloSpireTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CFA9059E155899320022EEE0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CFA90573155899320022EEE0 /* HelloSpire */;
+			targetProxy = CFA9059D155899320022EEE0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CFA90581155899320022EEE0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFA90582155899320022EEE0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CFA9058D155899320022EEE0 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFA9058E155899320022EEE0 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		CFA90590155899320022EEE0 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFA90591155899320022EEE0 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		CFA905A2155899330022EEE0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CFA905A3155899330022EEE0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CFA905A8155899330022EEE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFA905A9155899330022EEE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CFA905AB155899330022EEE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloSpire/HelloSpire-Prefix.pch";
+				INFOPLIST_FILE = "HelloSpire/HelloSpire-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CFA905AC155899330022EEE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloSpire/HelloSpire-Prefix.pch";
+				INFOPLIST_FILE = "HelloSpire/HelloSpire-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CFA905AE155899330022EEE0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloSpire.app/HelloSpire";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloSpire/HelloSpire-Prefix.pch";
+				INFOPLIST_FILE = "HelloSpireTests/HelloSpireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CFA905AF155899330022EEE0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloSpire.app/HelloSpire";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloSpire/HelloSpire-Prefix.pch";
+				INFOPLIST_FILE = "HelloSpireTests/HelloSpireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CFA9056E155899320022EEE0 /* Build configuration list for PBXProject "HelloSpire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA905A8155899330022EEE0 /* Debug */,
+				CFA905A9155899330022EEE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFA905AA155899330022EEE0 /* Build configuration list for PBXNativeTarget "HelloSpire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA905AB155899330022EEE0 /* Debug */,
+				CFA905AC155899330022EEE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CFA905AD155899330022EEE0 /* Build configuration list for PBXNativeTarget "HelloSpireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFA905AE155899330022EEE0 /* Debug */,
+				CFA905AF155899330022EEE0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CFA9056B155899320022EEE0 /* Project object */;
+}

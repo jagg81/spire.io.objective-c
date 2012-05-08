@@ -1,0 +1,725 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF515EF2154F59AA00542D92 /* SPHTTPHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515EF0154F59AA00542D92 /* SPHTTPHeaders.h */; };
+		CF515EF3154F59AA00542D92 /* SPHTTPHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515EF1154F59AA00542D92 /* SPHTTPHeaders.m */; };
+		CF515F1D154F6EE800542D92 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F08154F6EE800542D92 /* AFHTTPClient.h */; };
+		CF515F1E154F6EE800542D92 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F09154F6EE800542D92 /* AFHTTPClient.m */; };
+		CF515F1F154F6EE800542D92 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F0A154F6EE800542D92 /* AFHTTPRequestOperation.h */; };
+		CF515F20154F6EE800542D92 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F0B154F6EE800542D92 /* AFHTTPRequestOperation.m */; };
+		CF515F21154F6EE800542D92 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F0C154F6EE800542D92 /* AFImageRequestOperation.h */; };
+		CF515F22154F6EE800542D92 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F0D154F6EE800542D92 /* AFImageRequestOperation.m */; };
+		CF515F23154F6EE800542D92 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F0E154F6EE800542D92 /* AFJSONRequestOperation.h */; };
+		CF515F24154F6EE800542D92 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F0F154F6EE800542D92 /* AFJSONRequestOperation.m */; };
+		CF515F25154F6EE800542D92 /* AFJSONUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F10154F6EE800542D92 /* AFJSONUtilities.h */; };
+		CF515F26154F6EE800542D92 /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F11154F6EE800542D92 /* AFJSONUtilities.m */; };
+		CF515F27154F6EE800542D92 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F12154F6EE800542D92 /* AFNetworkActivityIndicatorManager.h */; };
+		CF515F28154F6EE800542D92 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F13154F6EE800542D92 /* AFNetworkActivityIndicatorManager.m */; };
+		CF515F29154F6EE800542D92 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F14154F6EE800542D92 /* AFNetworking.h */; };
+		CF515F2A154F6EE800542D92 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F15154F6EE800542D92 /* AFPropertyListRequestOperation.h */; };
+		CF515F2B154F6EE800542D92 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F16154F6EE800542D92 /* AFPropertyListRequestOperation.m */; };
+		CF515F2C154F6EE800542D92 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F17154F6EE800542D92 /* AFURLConnectionOperation.h */; };
+		CF515F2D154F6EE800542D92 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F18154F6EE800542D92 /* AFURLConnectionOperation.m */; };
+		CF515F2E154F6EE800542D92 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F19154F6EE800542D92 /* AFXMLRequestOperation.h */; };
+		CF515F2F154F6EE800542D92 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F1A154F6EE800542D92 /* AFXMLRequestOperation.m */; };
+		CF515F30154F6EE800542D92 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F1B154F6EE800542D92 /* UIImageView+AFNetworking.h */; };
+		CF515F31154F6EE800542D92 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F1C154F6EE800542D92 /* UIImageView+AFNetworking.m */; };
+		CF515F35154F6F5800542D92 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F33154F6F5800542D92 /* JSONKit.h */; };
+		CF515F36154F6F5800542D92 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F34154F6F5800542D92 /* JSONKit.m */; };
+		CF515F3A154F70BD00542D92 /* SPJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F38154F70BD00542D92 /* SPJSONRequestOperation.h */; };
+		CF515F3B154F70BD00542D92 /* SPJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F39154F70BD00542D92 /* SPJSONRequestOperation.m */; };
+		CF515F3E154F81E600542D92 /* SPAFRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F3C154F81E600542D92 /* SPAFRequest.h */; };
+		CF515F3F154F81E600542D92 /* SPAFRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F3D154F81E600542D92 /* SPAFRequest.m */; };
+		CF515F42154F820700542D92 /* SPAFResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F40154F820600542D92 /* SPAFResponse.h */; };
+		CF515F43154F820700542D92 /* SPAFResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515F41154F820700542D92 /* SPAFResponse.m */; };
+		CF6975791547933300D7E4B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6975781547933300D7E4B4 /* Foundation.framework */; };
+		CF69757F1547933300D7E4B4 /* Spire.m in Sources */ = {isa = PBXBuildFile; fileRef = CF69757E1547933300D7E4B4 /* Spire.m */; };
+		CF6975871547933300D7E4B4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6975861547933300D7E4B4 /* SenTestingKit.framework */; };
+		CF6975891547933300D7E4B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6975881547933300D7E4B4 /* UIKit.framework */; };
+		CF69758A1547933300D7E4B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6975781547933300D7E4B4 /* Foundation.framework */; };
+		CF69758D1547933300D7E4B4 /* libSpire.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6975751547933300D7E4B4 /* libSpire.a */; };
+		CF6975931547933300D7E4B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF6975911547933300D7E4B4 /* InfoPlist.strings */; };
+		CF6975961547933300D7E4B4 /* SpireTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975951547933300D7E4B4 /* SpireTests.m */; };
+		CF6975A2154B22D400D7E4B4 /* SPApi.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975A0154B22D400D7E4B4 /* SPApi.h */; };
+		CF6975A3154B22D400D7E4B4 /* SPApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975A1154B22D400D7E4B4 /* SPApi.m */; };
+		CF6975A7154B267F00D7E4B4 /* ApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975A6154B267F00D7E4B4 /* ApiTest.m */; };
+		CF6975AA154B270400D7E4B4 /* SPResource.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975A8154B270400D7E4B4 /* SPResource.h */; };
+		CF6975AB154B270400D7E4B4 /* SPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975A9154B270400D7E4B4 /* SPResource.m */; };
+		CF6975AE154B2A0B00D7E4B4 /* SPSession.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975AC154B2A0B00D7E4B4 /* SPSession.h */; };
+		CF6975AF154B2A0B00D7E4B4 /* SPSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975AD154B2A0B00D7E4B4 /* SPSession.m */; };
+		CF6975B2154B2AA300D7E4B4 /* SPChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975B0154B2AA300D7E4B4 /* SPChannel.h */; };
+		CF6975B3154B2AA300D7E4B4 /* SPChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975B1154B2AA300D7E4B4 /* SPChannel.m */; };
+		CF6975B6154B2AC900D7E4B4 /* SPChannels.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975B4154B2AC900D7E4B4 /* SPChannels.h */; };
+		CF6975B7154B2AC900D7E4B4 /* SPChannels.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975B5154B2AC900D7E4B4 /* SPChannels.m */; };
+		CF6975BA154B304000D7E4B4 /* SPSubscription.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975B8154B303F00D7E4B4 /* SPSubscription.h */; };
+		CF6975BB154B304000D7E4B4 /* SPSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975B9154B304000D7E4B4 /* SPSubscription.m */; };
+		CF6975BE154B305300D7E4B4 /* SPSubscriptions.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975BC154B305200D7E4B4 /* SPSubscriptions.h */; };
+		CF6975BF154B305300D7E4B4 /* SPSubscriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975BD154B305300D7E4B4 /* SPSubscriptions.m */; };
+		CF6975C7154B691B00D7E4B4 /* SPGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975C6154B691A00D7E4B4 /* SPGlobal.h */; };
+		CF6975CA154B6E1400D7E4B4 /* SPAccount.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975C8154B6E1200D7E4B4 /* SPAccount.h */; };
+		CF6975CB154B6E1400D7E4B4 /* SPAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975C9154B6E1300D7E4B4 /* SPAccount.m */; };
+		CF6975CD154B764600D7E4B4 /* SPHTTPResponseOperationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975CC154B764600D7E4B4 /* SPHTTPResponseOperationDelegate.h */; };
+		CF6975D0154B767E00D7E4B4 /* SPHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975CE154B767E00D7E4B4 /* SPHTTPRequest.h */; };
+		CF6975D1154B767E00D7E4B4 /* SPHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975CF154B767E00D7E4B4 /* SPHTTPRequest.m */; };
+		CF6975D6154B775300D7E4B4 /* SPHTTPResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975D4154B775300D7E4B4 /* SPHTTPResponse.h */; };
+		CF6975D7154B775300D7E4B4 /* SPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975D5154B775300D7E4B4 /* SPHTTPResponse.m */; };
+		CF6975DA154B79EF00D7E4B4 /* SPHTTPRequestData.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975D8154B79EE00D7E4B4 /* SPHTTPRequestData.h */; };
+		CF6975DB154B79EF00D7E4B4 /* SPHTTPRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975D9154B79EE00D7E4B4 /* SPHTTPRequestData.m */; };
+		CFA9056415585F170022EEE0 /* AFHTTPRequestOperationLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA9056215585F170022EEE0 /* AFHTTPRequestOperationLogger.h */; };
+		CFA9056515585F170022EEE0 /* AFHTTPRequestOperationLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA9056315585F170022EEE0 /* AFHTTPRequestOperationLogger.m */; };
+		CFA90566155867A60022EEE0 /* Spire.h in Headers */ = {isa = PBXBuildFile; fileRef = CF69757D1547933300D7E4B4 /* Spire.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFA90568155868680022EEE0 /* SpireClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA90567155868680022EEE0 /* SpireClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CFB9C4EC155345FC00AB08EA /* SPHTTPRequestFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = CFB9C4EA155345FB00AB08EA /* SPHTTPRequestFactory.h */; };
+		CFB9C4ED155345FC00AB08EA /* SPHTTPRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB9C4EB155345FB00AB08EA /* SPHTTPRequestFactory.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF69758B1547933300D7E4B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF69756C1547933300D7E4B4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF6975741547933300D7E4B4;
+			remoteInfo = Spire;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF515EF0154F59AA00542D92 /* SPHTTPHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPHeaders.h; sourceTree = "<group>"; };
+		CF515EF1154F59AA00542D92 /* SPHTTPHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPHeaders.m; sourceTree = "<group>"; };
+		CF515F08154F6EE800542D92 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		CF515F09154F6EE800542D92 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		CF515F0A154F6EE800542D92 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		CF515F0B154F6EE800542D92 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		CF515F0C154F6EE800542D92 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		CF515F0D154F6EE800542D92 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		CF515F0E154F6EE800542D92 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		CF515F0F154F6EE800542D92 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		CF515F10154F6EE800542D92 /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONUtilities.h; sourceTree = "<group>"; };
+		CF515F11154F6EE800542D92 /* AFJSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONUtilities.m; sourceTree = "<group>"; };
+		CF515F12154F6EE800542D92 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		CF515F13154F6EE800542D92 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		CF515F14154F6EE800542D92 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		CF515F15154F6EE800542D92 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		CF515F16154F6EE800542D92 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		CF515F17154F6EE800542D92 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		CF515F18154F6EE800542D92 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		CF515F19154F6EE800542D92 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		CF515F1A154F6EE800542D92 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		CF515F1B154F6EE800542D92 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		CF515F1C154F6EE800542D92 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		CF515F33154F6F5800542D92 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		CF515F34154F6F5800542D92 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		CF515F38154F70BD00542D92 /* SPJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPJSONRequestOperation.h; sourceTree = "<group>"; };
+		CF515F39154F70BD00542D92 /* SPJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPJSONRequestOperation.m; sourceTree = "<group>"; };
+		CF515F3C154F81E600542D92 /* SPAFRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAFRequest.h; sourceTree = "<group>"; };
+		CF515F3D154F81E600542D92 /* SPAFRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAFRequest.m; sourceTree = "<group>"; };
+		CF515F40154F820600542D92 /* SPAFResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAFResponse.h; sourceTree = "<group>"; };
+		CF515F41154F820700542D92 /* SPAFResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAFResponse.m; sourceTree = "<group>"; };
+		CF6975751547933300D7E4B4 /* libSpire.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSpire.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6975781547933300D7E4B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CF69757C1547933300D7E4B4 /* Spire-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spire-Prefix.pch"; sourceTree = "<group>"; };
+		CF69757D1547933300D7E4B4 /* Spire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spire.h; sourceTree = "<group>"; };
+		CF69757E1547933300D7E4B4 /* Spire.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spire.m; sourceTree = "<group>"; };
+		CF6975851547933300D7E4B4 /* SpireTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpireTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6975861547933300D7E4B4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CF6975881547933300D7E4B4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		CF6975901547933300D7E4B4 /* SpireTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpireTests-Info.plist"; sourceTree = "<group>"; };
+		CF6975921547933300D7E4B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CF6975941547933300D7E4B4 /* SpireTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpireTests.h; sourceTree = "<group>"; };
+		CF6975951547933300D7E4B4 /* SpireTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpireTests.m; sourceTree = "<group>"; };
+		CF6975A0154B22D400D7E4B4 /* SPApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPApi.h; sourceTree = "<group>"; };
+		CF6975A1154B22D400D7E4B4 /* SPApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPApi.m; sourceTree = "<group>"; };
+		CF6975A5154B267F00D7E4B4 /* SPApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPApiTest.h; sourceTree = "<group>"; };
+		CF6975A6154B267F00D7E4B4 /* ApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiTest.m; sourceTree = "<group>"; };
+		CF6975A8154B270400D7E4B4 /* SPResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPResource.h; sourceTree = "<group>"; };
+		CF6975A9154B270400D7E4B4 /* SPResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPResource.m; sourceTree = "<group>"; };
+		CF6975AC154B2A0B00D7E4B4 /* SPSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSession.h; sourceTree = "<group>"; };
+		CF6975AD154B2A0B00D7E4B4 /* SPSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSession.m; sourceTree = "<group>"; };
+		CF6975B0154B2AA300D7E4B4 /* SPChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChannel.h; sourceTree = "<group>"; };
+		CF6975B1154B2AA300D7E4B4 /* SPChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChannel.m; sourceTree = "<group>"; };
+		CF6975B4154B2AC900D7E4B4 /* SPChannels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPChannels.h; sourceTree = "<group>"; };
+		CF6975B5154B2AC900D7E4B4 /* SPChannels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPChannels.m; sourceTree = "<group>"; };
+		CF6975B8154B303F00D7E4B4 /* SPSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSubscription.h; sourceTree = "<group>"; };
+		CF6975B9154B304000D7E4B4 /* SPSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSubscription.m; sourceTree = "<group>"; };
+		CF6975BC154B305200D7E4B4 /* SPSubscriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSubscriptions.h; sourceTree = "<group>"; };
+		CF6975BD154B305300D7E4B4 /* SPSubscriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSubscriptions.m; sourceTree = "<group>"; };
+		CF6975C6154B691A00D7E4B4 /* SPGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGlobal.h; sourceTree = "<group>"; };
+		CF6975C8154B6E1200D7E4B4 /* SPAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAccount.h; sourceTree = "<group>"; };
+		CF6975C9154B6E1300D7E4B4 /* SPAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAccount.m; sourceTree = "<group>"; };
+		CF6975CC154B764600D7E4B4 /* SPHTTPResponseOperationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPResponseOperationDelegate.h; sourceTree = "<group>"; };
+		CF6975CE154B767E00D7E4B4 /* SPHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPRequest.h; sourceTree = "<group>"; };
+		CF6975CF154B767E00D7E4B4 /* SPHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequest.m; sourceTree = "<group>"; };
+		CF6975D4154B775300D7E4B4 /* SPHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPResponse.h; sourceTree = "<group>"; };
+		CF6975D5154B775300D7E4B4 /* SPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPResponse.m; sourceTree = "<group>"; };
+		CF6975D8154B79EE00D7E4B4 /* SPHTTPRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPRequestData.h; sourceTree = "<group>"; };
+		CF6975D9154B79EE00D7E4B4 /* SPHTTPRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequestData.m; sourceTree = "<group>"; };
+		CFA9056215585F170022EEE0 /* AFHTTPRequestOperationLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationLogger.h; sourceTree = "<group>"; };
+		CFA9056315585F170022EEE0 /* AFHTTPRequestOperationLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationLogger.m; sourceTree = "<group>"; };
+		CFA90567155868680022EEE0 /* SpireClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpireClient.h; sourceTree = "<group>"; };
+		CFB9C4EA155345FB00AB08EA /* SPHTTPRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPRequestFactory.h; sourceTree = "<group>"; };
+		CFB9C4EB155345FB00AB08EA /* SPHTTPRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequestFactory.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF6975721547933300D7E4B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF6975791547933300D7E4B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF6975811547933300D7E4B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF6975871547933300D7E4B4 /* SenTestingKit.framework in Frameworks */,
+				CF6975891547933300D7E4B4 /* UIKit.framework in Frameworks */,
+				CF69758A1547933300D7E4B4 /* Foundation.framework in Frameworks */,
+				CF69758D1547933300D7E4B4 /* libSpire.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF515F06154F6E2600542D92 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				CFA9056115585EFB0022EEE0 /* AFLogger */,
+				CF515F32154F6F5800542D92 /* JSONKit */,
+				CF515F07154F6EE800542D92 /* AFNetworking */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		CF515F07154F6EE800542D92 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				CF515F08154F6EE800542D92 /* AFHTTPClient.h */,
+				CF515F09154F6EE800542D92 /* AFHTTPClient.m */,
+				CF515F0A154F6EE800542D92 /* AFHTTPRequestOperation.h */,
+				CF515F0B154F6EE800542D92 /* AFHTTPRequestOperation.m */,
+				CF515F0C154F6EE800542D92 /* AFImageRequestOperation.h */,
+				CF515F0D154F6EE800542D92 /* AFImageRequestOperation.m */,
+				CF515F0E154F6EE800542D92 /* AFJSONRequestOperation.h */,
+				CF515F0F154F6EE800542D92 /* AFJSONRequestOperation.m */,
+				CF515F10154F6EE800542D92 /* AFJSONUtilities.h */,
+				CF515F11154F6EE800542D92 /* AFJSONUtilities.m */,
+				CF515F12154F6EE800542D92 /* AFNetworkActivityIndicatorManager.h */,
+				CF515F13154F6EE800542D92 /* AFNetworkActivityIndicatorManager.m */,
+				CF515F14154F6EE800542D92 /* AFNetworking.h */,
+				CF515F15154F6EE800542D92 /* AFPropertyListRequestOperation.h */,
+				CF515F16154F6EE800542D92 /* AFPropertyListRequestOperation.m */,
+				CF515F17154F6EE800542D92 /* AFURLConnectionOperation.h */,
+				CF515F18154F6EE800542D92 /* AFURLConnectionOperation.m */,
+				CF515F19154F6EE800542D92 /* AFXMLRequestOperation.h */,
+				CF515F1A154F6EE800542D92 /* AFXMLRequestOperation.m */,
+				CF515F1B154F6EE800542D92 /* UIImageView+AFNetworking.h */,
+				CF515F1C154F6EE800542D92 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		CF515F32154F6F5800542D92 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				CF515F33154F6F5800542D92 /* JSONKit.h */,
+				CF515F34154F6F5800542D92 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		CF515F37154F703700542D92 /* HTTPWrappers */ = {
+			isa = PBXGroup;
+			children = (
+				CF515F38154F70BD00542D92 /* SPJSONRequestOperation.h */,
+				CF515F39154F70BD00542D92 /* SPJSONRequestOperation.m */,
+				CF515F3C154F81E600542D92 /* SPAFRequest.h */,
+				CF515F3D154F81E600542D92 /* SPAFRequest.m */,
+				CF515F40154F820600542D92 /* SPAFResponse.h */,
+				CF515F41154F820700542D92 /* SPAFResponse.m */,
+			);
+			name = HTTPWrappers;
+			sourceTree = "<group>";
+		};
+		CF69756A1547933300D7E4B4 = {
+			isa = PBXGroup;
+			children = (
+				CF515F06154F6E2600542D92 /* Vendor */,
+				CF69757A1547933300D7E4B4 /* Spire */,
+				CF69758E1547933300D7E4B4 /* SpireTests */,
+				CF6975771547933300D7E4B4 /* Frameworks */,
+				CF6975761547933300D7E4B4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF6975761547933300D7E4B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF6975751547933300D7E4B4 /* libSpire.a */,
+				CF6975851547933300D7E4B4 /* SpireTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF6975771547933300D7E4B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF6975781547933300D7E4B4 /* Foundation.framework */,
+				CF6975861547933300D7E4B4 /* SenTestingKit.framework */,
+				CF6975881547933300D7E4B4 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF69757A1547933300D7E4B4 /* Spire */ = {
+			isa = PBXGroup;
+			children = (
+				CFA90567155868680022EEE0 /* SpireClient.h */,
+				CF69757D1547933300D7E4B4 /* Spire.h */,
+				CF69757E1547933300D7E4B4 /* Spire.m */,
+				CF6975C6154B691A00D7E4B4 /* SPGlobal.h */,
+				CF69759F154B221B00D7E4B4 /* Api */,
+				CF6975A4154B22E000D7E4B4 /* Request */,
+				CF69757B1547933300D7E4B4 /* Supporting Files */,
+			);
+			path = Spire;
+			sourceTree = "<group>";
+		};
+		CF69757B1547933300D7E4B4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CF69757C1547933300D7E4B4 /* Spire-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF69758E1547933300D7E4B4 /* SpireTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF6975941547933300D7E4B4 /* SpireTests.h */,
+				CF6975951547933300D7E4B4 /* SpireTests.m */,
+				CF6975C0154B32CB00D7E4B4 /* ApiTests */,
+				CF6975C1154B32DA00D7E4B4 /* RequestTests */,
+				CF69758F1547933300D7E4B4 /* Supporting Files */,
+			);
+			path = SpireTests;
+			sourceTree = "<group>";
+		};
+		CF69758F1547933300D7E4B4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CF6975901547933300D7E4B4 /* SpireTests-Info.plist */,
+				CF6975911547933300D7E4B4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF69759F154B221B00D7E4B4 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				CF6975A0154B22D400D7E4B4 /* SPApi.h */,
+				CF6975A1154B22D400D7E4B4 /* SPApi.m */,
+				CF6975A8154B270400D7E4B4 /* SPResource.h */,
+				CF6975A9154B270400D7E4B4 /* SPResource.m */,
+				CF6975AC154B2A0B00D7E4B4 /* SPSession.h */,
+				CF6975AD154B2A0B00D7E4B4 /* SPSession.m */,
+				CF6975B0154B2AA300D7E4B4 /* SPChannel.h */,
+				CF6975B1154B2AA300D7E4B4 /* SPChannel.m */,
+				CF6975B4154B2AC900D7E4B4 /* SPChannels.h */,
+				CF6975B5154B2AC900D7E4B4 /* SPChannels.m */,
+				CF6975B8154B303F00D7E4B4 /* SPSubscription.h */,
+				CF6975B9154B304000D7E4B4 /* SPSubscription.m */,
+				CF6975BC154B305200D7E4B4 /* SPSubscriptions.h */,
+				CF6975BD154B305300D7E4B4 /* SPSubscriptions.m */,
+				CF6975C8154B6E1200D7E4B4 /* SPAccount.h */,
+				CF6975C9154B6E1300D7E4B4 /* SPAccount.m */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		CF6975A4154B22E000D7E4B4 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				CF515F37154F703700542D92 /* HTTPWrappers */,
+				CF6975CC154B764600D7E4B4 /* SPHTTPResponseOperationDelegate.h */,
+				CF6975CE154B767E00D7E4B4 /* SPHTTPRequest.h */,
+				CF6975CF154B767E00D7E4B4 /* SPHTTPRequest.m */,
+				CF6975D4154B775300D7E4B4 /* SPHTTPResponse.h */,
+				CF6975D5154B775300D7E4B4 /* SPHTTPResponse.m */,
+				CF6975D8154B79EE00D7E4B4 /* SPHTTPRequestData.h */,
+				CF6975D9154B79EE00D7E4B4 /* SPHTTPRequestData.m */,
+				CF515EF0154F59AA00542D92 /* SPHTTPHeaders.h */,
+				CF515EF1154F59AA00542D92 /* SPHTTPHeaders.m */,
+				CFB9C4EA155345FB00AB08EA /* SPHTTPRequestFactory.h */,
+				CFB9C4EB155345FB00AB08EA /* SPHTTPRequestFactory.m */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		CF6975C0154B32CB00D7E4B4 /* ApiTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF6975A5154B267F00D7E4B4 /* SPApiTest.h */,
+				CF6975A6154B267F00D7E4B4 /* ApiTest.m */,
+			);
+			name = ApiTests;
+			sourceTree = "<group>";
+		};
+		CF6975C1154B32DA00D7E4B4 /* RequestTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RequestTests;
+			sourceTree = "<group>";
+		};
+		CFA9056115585EFB0022EEE0 /* AFLogger */ = {
+			isa = PBXGroup;
+			children = (
+				CFA9056215585F170022EEE0 /* AFHTTPRequestOperationLogger.h */,
+				CFA9056315585F170022EEE0 /* AFHTTPRequestOperationLogger.m */,
+			);
+			name = AFLogger;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CF6975731547933300D7E4B4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF6975A2154B22D400D7E4B4 /* SPApi.h in Headers */,
+				CF6975AA154B270400D7E4B4 /* SPResource.h in Headers */,
+				CF6975AE154B2A0B00D7E4B4 /* SPSession.h in Headers */,
+				CF6975B2154B2AA300D7E4B4 /* SPChannel.h in Headers */,
+				CF6975B6154B2AC900D7E4B4 /* SPChannels.h in Headers */,
+				CF6975BA154B304000D7E4B4 /* SPSubscription.h in Headers */,
+				CF6975BE154B305300D7E4B4 /* SPSubscriptions.h in Headers */,
+				CF6975C7154B691B00D7E4B4 /* SPGlobal.h in Headers */,
+				CF6975CA154B6E1400D7E4B4 /* SPAccount.h in Headers */,
+				CF6975CD154B764600D7E4B4 /* SPHTTPResponseOperationDelegate.h in Headers */,
+				CF6975D0154B767E00D7E4B4 /* SPHTTPRequest.h in Headers */,
+				CF6975D6154B775300D7E4B4 /* SPHTTPResponse.h in Headers */,
+				CF6975DA154B79EF00D7E4B4 /* SPHTTPRequestData.h in Headers */,
+				CF515EF2154F59AA00542D92 /* SPHTTPHeaders.h in Headers */,
+				CF515F1D154F6EE800542D92 /* AFHTTPClient.h in Headers */,
+				CF515F1F154F6EE800542D92 /* AFHTTPRequestOperation.h in Headers */,
+				CF515F21154F6EE800542D92 /* AFImageRequestOperation.h in Headers */,
+				CF515F23154F6EE800542D92 /* AFJSONRequestOperation.h in Headers */,
+				CF515F25154F6EE800542D92 /* AFJSONUtilities.h in Headers */,
+				CF515F27154F6EE800542D92 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				CF515F29154F6EE800542D92 /* AFNetworking.h in Headers */,
+				CF515F2A154F6EE800542D92 /* AFPropertyListRequestOperation.h in Headers */,
+				CF515F2C154F6EE800542D92 /* AFURLConnectionOperation.h in Headers */,
+				CF515F2E154F6EE800542D92 /* AFXMLRequestOperation.h in Headers */,
+				CF515F30154F6EE800542D92 /* UIImageView+AFNetworking.h in Headers */,
+				CF515F35154F6F5800542D92 /* JSONKit.h in Headers */,
+				CF515F3A154F70BD00542D92 /* SPJSONRequestOperation.h in Headers */,
+				CF515F3E154F81E600542D92 /* SPAFRequest.h in Headers */,
+				CF515F42154F820700542D92 /* SPAFResponse.h in Headers */,
+				CFB9C4EC155345FC00AB08EA /* SPHTTPRequestFactory.h in Headers */,
+				CFA9056415585F170022EEE0 /* AFHTTPRequestOperationLogger.h in Headers */,
+				CFA90566155867A60022EEE0 /* Spire.h in Headers */,
+				CFA90568155868680022EEE0 /* SpireClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CF6975741547933300D7E4B4 /* Spire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF6975991547933300D7E4B4 /* Build configuration list for PBXNativeTarget "Spire" */;
+			buildPhases = (
+				CF6975711547933300D7E4B4 /* Sources */,
+				CF6975721547933300D7E4B4 /* Frameworks */,
+				CF6975731547933300D7E4B4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spire;
+			productName = Spire;
+			productReference = CF6975751547933300D7E4B4 /* libSpire.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CF6975841547933300D7E4B4 /* SpireTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF69759C1547933300D7E4B4 /* Build configuration list for PBXNativeTarget "SpireTests" */;
+			buildPhases = (
+				CF6975801547933300D7E4B4 /* Sources */,
+				CF6975811547933300D7E4B4 /* Frameworks */,
+				CF6975821547933300D7E4B4 /* Resources */,
+				CF6975831547933300D7E4B4 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF69758C1547933300D7E4B4 /* PBXTargetDependency */,
+			);
+			name = SpireTests;
+			productName = SpireTests;
+			productReference = CF6975851547933300D7E4B4 /* SpireTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF69756C1547933300D7E4B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Spire.io;
+			};
+			buildConfigurationList = CF69756F1547933300D7E4B4 /* Build configuration list for PBXProject "Spire" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF69756A1547933300D7E4B4;
+			productRefGroup = CF6975761547933300D7E4B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF6975741547933300D7E4B4 /* Spire */,
+				CF6975841547933300D7E4B4 /* SpireTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF6975821547933300D7E4B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF6975931547933300D7E4B4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF6975831547933300D7E4B4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF6975711547933300D7E4B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF69757F1547933300D7E4B4 /* Spire.m in Sources */,
+				CF6975A3154B22D400D7E4B4 /* SPApi.m in Sources */,
+				CF6975AB154B270400D7E4B4 /* SPResource.m in Sources */,
+				CF6975AF154B2A0B00D7E4B4 /* SPSession.m in Sources */,
+				CF6975B3154B2AA300D7E4B4 /* SPChannel.m in Sources */,
+				CF6975B7154B2AC900D7E4B4 /* SPChannels.m in Sources */,
+				CF6975BB154B304000D7E4B4 /* SPSubscription.m in Sources */,
+				CF6975BF154B305300D7E4B4 /* SPSubscriptions.m in Sources */,
+				CF6975CB154B6E1400D7E4B4 /* SPAccount.m in Sources */,
+				CF6975D1154B767E00D7E4B4 /* SPHTTPRequest.m in Sources */,
+				CF6975D7154B775300D7E4B4 /* SPHTTPResponse.m in Sources */,
+				CF6975DB154B79EF00D7E4B4 /* SPHTTPRequestData.m in Sources */,
+				CF515EF3154F59AA00542D92 /* SPHTTPHeaders.m in Sources */,
+				CF515F1E154F6EE800542D92 /* AFHTTPClient.m in Sources */,
+				CF515F20154F6EE800542D92 /* AFHTTPRequestOperation.m in Sources */,
+				CF515F22154F6EE800542D92 /* AFImageRequestOperation.m in Sources */,
+				CF515F24154F6EE800542D92 /* AFJSONRequestOperation.m in Sources */,
+				CF515F26154F6EE800542D92 /* AFJSONUtilities.m in Sources */,
+				CF515F28154F6EE800542D92 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				CF515F2B154F6EE800542D92 /* AFPropertyListRequestOperation.m in Sources */,
+				CF515F2D154F6EE800542D92 /* AFURLConnectionOperation.m in Sources */,
+				CF515F2F154F6EE800542D92 /* AFXMLRequestOperation.m in Sources */,
+				CF515F31154F6EE800542D92 /* UIImageView+AFNetworking.m in Sources */,
+				CF515F36154F6F5800542D92 /* JSONKit.m in Sources */,
+				CF515F3B154F70BD00542D92 /* SPJSONRequestOperation.m in Sources */,
+				CF515F3F154F81E600542D92 /* SPAFRequest.m in Sources */,
+				CF515F43154F820700542D92 /* SPAFResponse.m in Sources */,
+				CFB9C4ED155345FC00AB08EA /* SPHTTPRequestFactory.m in Sources */,
+				CFA9056515585F170022EEE0 /* AFHTTPRequestOperationLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF6975801547933300D7E4B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF6975961547933300D7E4B4 /* SpireTests.m in Sources */,
+				CF6975A7154B267F00D7E4B4 /* ApiTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF69758C1547933300D7E4B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF6975741547933300D7E4B4 /* Spire */;
+			targetProxy = CF69758B1547933300D7E4B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF6975911547933300D7E4B4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF6975921547933300D7E4B4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF6975971547933300D7E4B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CF6975981547933300D7E4B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF69759A1547933300D7E4B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Spire.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spire/Spire-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CF69759B1547933300D7E4B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Spire.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spire/Spire-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CF69759D1547933300D7E4B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spire/Spire-Prefix.pch";
+				INFOPLIST_FILE = "SpireTests/SpireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CF69759E1547933300D7E4B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Spire/Spire-Prefix.pch";
+				INFOPLIST_FILE = "SpireTests/SpireTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF69756F1547933300D7E4B4 /* Build configuration list for PBXProject "Spire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF6975971547933300D7E4B4 /* Debug */,
+				CF6975981547933300D7E4B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF6975991547933300D7E4B4 /* Build configuration list for PBXNativeTarget "Spire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF69759A1547933300D7E4B4 /* Debug */,
+				CF69759B1547933300D7E4B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF69759C1547933300D7E4B4 /* Build configuration list for PBXNativeTarget "SpireTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF69759D1547933300D7E4B4 /* Debug */,
+				CF69759E1547933300D7E4B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF69756C1547933300D7E4B4 /* Project object */;
+}
