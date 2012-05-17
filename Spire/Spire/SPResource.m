@@ -20,19 +20,25 @@
     return self;
 }
 
-- (id)getProperty:(NSString *)name
-{
-    return [_rawModel objectForKey:name];
-}
-
 - (void)dealloc{
     SP_RELEASE_SAFELY(_rawModel);
     [super dealloc];
 }
 
+- (id)getProperty:(NSString *)name
+{
+    return [_rawModel objectForKey:name];
+}
+
 + (SPResourceModel *)createResourceModel:(id)rawModel
 {
     return [[[self alloc] initWithRawModel:rawModel] autorelease];
+}
+
+- (SPResourceModel *)getResourceModel:(NSString *)resourceName
+{
+    id rawData = [self getProperty:resourceName];
+    return [[self class] createResourceModel:rawData];
 }
 
 @end
@@ -78,8 +84,14 @@
 
 + (SPResource *)createResourceWithRawModel:(id)rawModel
 {
-    return [[[SPResource alloc] initWithRawResourceModel:rawModel] autorelease];
+    return [[[self alloc] initWithRawResourceModel:rawModel] autorelease];
 }
+
+- (SPResourceModel *)getResourceModel:(NSString *)resourceName
+{
+    return [_model getResourceModel:resourceName];
+}
+
 
 # pragma mark - SPHTTPResponseParser
 + (id)parseHTTPResponse:(SPHTTPResponse *)response

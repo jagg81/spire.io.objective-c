@@ -10,4 +10,14 @@
 
 @implementation SPAccount
 
+
+- (NSString *)getSecret
+{
+    NSString *secret = [_model getProperty:@"secret"];
+    if (secret) {
+        return [NSString stringWithString:secret];
+    }
+    return secret;
+}
+
 @end

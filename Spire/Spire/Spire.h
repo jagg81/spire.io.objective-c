@@ -17,7 +17,7 @@
 //static NSString* SPIRE_URL = @"https://api.spire.io";
 static NSString* SPIRE_URL = @"http://localhost:1337";
 
-@interface Spire : NSObject<SPOperationManager>{
+@interface Spire : NSObject<SPOperationManager, SPSpireApiDelegate>{
     NSString *_baseUrl;
     SPApi *_api;
     SPSession *_session;
@@ -28,6 +28,7 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 }
 
 @property(nonatomic, readonly) SPApi *api;
+@property(nonatomic, readonly) SPSession *session;
 @property(nonatomic, assign) id delegate;
 
 // constructors
@@ -37,6 +38,7 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 
 // main methods
 - (void)discover;
+- (void)discoverWithDelegate:(id)delegate;
 - (void)start:(NSString *)secretKey;
 - (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password;
 - (void)registerWithEmail:(NSString *)email password:(NSString *)password andConfirmation:(NSString *)confirmationPassword;
@@ -49,4 +51,15 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 - (SPSubscription *)subscribe:(NSString *)subscriptionName channels:(NSArray *)channels;
 - (SPSubscription *)subscribe:(NSString *)subscriptionName, ...;
 
+@end
+
+
+@protocol SPSpireDelegate <NSObject>
+
+@optional
+- (void)discoverDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)startDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)loginDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)registerAccountDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)deleteAccountDidFinishWithResponse:(SPHTTPResponse *)response;
 @end

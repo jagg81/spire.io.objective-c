@@ -25,7 +25,7 @@
 
 - (NSString *)uniqueEmail
 {
-    time_t currentTime = (time_t)[[NSDate date] timeIntervalSince1970];
+    double currentTime = [[NSDate date] timeIntervalSince1970] * 1000;
     return [NSString stringWithFormat:@"test+objcClient+%d@spire.io", currentTime];
 }
 
@@ -34,32 +34,70 @@
     [super setUp];
     // Set-up code here.
     
+    // start logger
+//    [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+
+    // setup spire object
     _email = [self uniqueEmail];
     _password = @"carlospants";
-    
-    [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
     _spire = [[Spire alloc] init];
     _spire.delegate = self;
+    [_spire registerWithEmail:_email password:_password andConfirmation:_password];
+    if ([self waitForCompletion:30.0]) {
+        _secret = [_spire.session.account getSecret];
+        SP_RELEASE_SAFELY(_response);
+    }else{
+        @throw [NSException exceptionWithName:@"SpireTestException" reason:@"Setup account registration failed" userInfo:nil];
+    }
     
-    // register
-    
-    // get secretKey (or application key??)
-    _secret = @"Ac-18298923iu23e";
     _done = NO;
 }
 
 - (void)tearDown
 {
     // Tear-down code here.
-    [_spire release];
+    SP_RELEASE_SAFELY(_spire);
+    SP_RELEASE_SAFELY(_response);
     [super tearDown];
 }
 
-- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response
+//- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response
+//{
+//    NSLog(@"SpireTests Response complete");
+//    _response = response;
+//    _done = YES;
+//}
+
+- (void)handleResponse:(SPHTTPResponse *)response
 {
     NSLog(@"SpireTests Response complete");
-    _response = response;
+    _response = [response retain];
     _done = YES;
+}
+
+- (void)discoverDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];
+}
+
+- (void)startDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];    
+}
+
+- (void)loginDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];
+}
+
+- (void)registerAccountDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];    
+}
+
+- (void)deleteAccountDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];    
 }
 
 - (void)testDiscover
@@ -79,25 +117,23 @@
 
     [spire registerWithEmail:email password:password andConfirmation:password];
     STAssertTrue([self waitForCompletion:30.0], @"Failed to register new account");
-    //    STAssertNotNil(_spire.session, @"Api description object is missing");
-    
+    STAssertNotNil(spire.session, @"Session object is missing");
 }
 
 - (void)testStart
 {
-//    [_spire start:_secret];
-//    STAssertTrue([self waitForCompletion:30.0], @"Failed to do API discover process");
-//    STAssertNotNil(_spire.session, @"Api description object is missing");
-    
-//    [_spire start:_secret];
-//    STAssertTrue([self waitForCompletion:30.0], @"Failed to do Start");
+    [_spire start:_secret];
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to start session with secret key");
+    STAssertNotNil(_spire.session, @"Session object is missing");
 }
 
 - (void)testLogin
 {
-    //    [_spire start:_secret];
-    //    STAssertTrue([self waitForCompletion:30.0], @"Failed to do API discover process");
-    //    STAssertNotNil(_spire.session, @"Api description object is missing");
+    Spire *spire = [[Spire alloc] init];
+    spire.delegate = self;
+    [spire loginWithEmail:_email andPassword:_password];
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to start session with secret key");
+    STAssertNotNil(spire.session, @"Session object is missing");
 }
 
 

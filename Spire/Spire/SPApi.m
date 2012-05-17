@@ -29,15 +29,25 @@
     [super dealloc];
 }
 
+- (SPResourceModel *)getSchema
+{
+    return _schema;
+}
+
+- (SPResourceModel *)getResources
+{
+    return _resources;
+}
+
 - (NSString *)getMediaType:(NSString *)resource
 {
     return [[[_schema getProperty:API_VERSION] objectForKey:resource] objectForKey:@"mediaType"];
 }
 
-- (SPResourceModel *)getResource:(NSString *)type
+# pragma mark - SPHTTPResponseParser
++ (id)parseHTTPResponse:(SPHTTPResponse *)response
 {
-    id rawData = [_resources getProperty:type];
-    return [SPResourceModel createResourceModel:rawData];
+    return [self createResourceModel:response.responseData];
 }
 
 
@@ -90,6 +100,12 @@
     [super dealloc];
 }
 
+- (SPResourceModel *)getResourceModel:(NSString *)resourceName
+{
+    SPResourceModel *resources = [_apiDescription getResources];
+    return [resources getResourceModel:resourceName];
+}
+
 - (void) setBaseUrl:(NSString *)baseUrl{
     if(_baseUrl){ SP_RELEASE_SAFELY(_baseUrl); }
     _baseUrl = [baseUrl retain];
@@ -118,21 +134,17 @@
 
 - (void)handleDiscover:(SPHTTPResponse *)response
 {
-//    NSLog(@"Response is back, fool");
-//    NSLog(@"Status Code => %i", [response.response statusCode]);
-//    NSLog(@"%@", response.responseData);
-    
     if (![response isSuccessStatusCode]) {
         // throw an exception handle by caller
         @throw [NSException exceptionWithName:@"SpireException" reason:@"discover failed" userInfo:nil];
     }
         
-    SPResourceModel *apiDescription = [SPApiDescriptionModel createResourceModel:response.responseData];
+    SPResourceModel *apiDescription = [response parseResponse];
     [self setApiDescriptionModel:apiDescription];
     
-//    NSLog(@"%@", [_apiDescription getProperty:@"schema"] );
-//    NSLog(@"%@", [response.responseData objectForKey:@"schema"]);
-
+    if (_delegate && [_delegate respondsToSelector:@selector(discoverApiDidFinishWithResponse:)] ) {
+        [_delegate discoverApiDidFinishWithResponse:response];
+    }
 }
 
 - (void)discover{
@@ -144,16 +156,15 @@
     SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
     
     SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:self selector:@selector(handleDiscover:)] autorelease];
-//    response.responseDelegate = _delegate;
+    response.parser = [SPApiDescriptionModel class];
     [request send:data response:response];
 }
 
-- (void)createAccountWithData:(NSDictionary *)data delegate:(id)delegate andSelector:(SEL)selector
+- (void)createAccountWithData:(NSDictionary *)data
 {
     SPHTTPRequestData *requestData = [SPHTTPRequestData createRequestData];
     requestData.type = SPHTTPRequestTypePOST;
-    requestData.url = [[_apiDescription getResource:@"accounts"] getProperty:@"url"];
-    
+    requestData.url = [[self getResourceModel:@"accounts"] getProperty:@"url"];    
     NSString *contentType = [_apiDescription getMediaType:@"account"];
     NSString *accept = [_apiDescription getMediaType:@"session"];
     requestData.headers = [NSDictionary dictionaryWithObjectsAndKeys:   accept, @"Accept", 
@@ -161,19 +172,57 @@
     requestData.body = data;
     
     SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
-    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:delegate selector:selector] autorelease];
-//    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:self] autorelease];
-//    response.parser = [SPSession class];
-    //    response.responseDelegate = _delegate;
-    [request send:requestData response:response];    
+    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:_delegate selector:@selector(createAccountDidFinishWithResponse:)] autorelease];
+    response.parser = [SPSession class];
+    [request send:requestData response:response];
 }
 
 - (void)createAccountWithEmail:(NSString *)email password:(NSString *)password andConfirmationPassword:(NSString *)confirmationPassword
 {
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:  email, @"email",
+                                                                      password, @"password",
+                                                                      confirmationPassword, @"password_confirmation", nil];
+    [self createAccountWithData:data];
+}
+
+- (void)createSessionWithData:(NSDictionary *)data delegate:(id)delegate andSelector:(SEL)selector
+{
+    SPHTTPRequestData *requestData = [SPHTTPRequestData createRequestData];
+    requestData.type = SPHTTPRequestTypePOST;
+    requestData.url = [[[_apiDescription getResources] getResourceModel:@"sessions"] getProperty:@"url"];    
+    NSString *contentType = [_apiDescription getMediaType:@"account"];
+    NSString *accept = [_apiDescription getMediaType:@"session"];
+    requestData.headers = [NSDictionary dictionaryWithObjectsAndKeys:   accept, @"Accept", 
+                           contentType, @"Content-Type", nil];
+    requestData.body = data;
+    
+    SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
+    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:delegate selector:selector] autorelease];
+    response.parser = [SPSession class];
+    [request send:requestData response:response];    
+}
+
+- (void)createSessionWithData:(NSDictionary *)data
+{
+    [self createSessionWithData:data delegate:_delegate andSelector:@selector(createSessionDidFinishWithResponse:)];
+}
+
+- (void)createSession:(NSString *)accountSecret
+{
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys: accountSecret, @"secret", nil];
+    [self createSessionWithData:data];
+}
+
+- (void)loginWithData:(NSDictionary *)data
+{
+    [self createSessionWithData:data delegate:_delegate andSelector:@selector(loginApiDidFinishWithResponse:)];
+}
+
+- (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password
+{
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:    email, @"email",
-                          password, @"password",
-                          confirmationPassword, @"password_confirmation", nil];
-    [self createAccountWithData:data delegate:self andSelector:nil];
+                                                                        password, @"password", nil];
+    [self loginWithData:data];
 }
 
 

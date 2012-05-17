@@ -8,6 +8,10 @@
 
 #import "SPResource.h"
 
-@interface SPAccount : SPResource
+@interface SPAccount : SPResource{
+    
+}
+
+- (NSString *)getSecret;
 
 @end

@@ -9,6 +9,30 @@
 #import "SPSession.h"
 
 @implementation SPSession
+@synthesize account = _account,
+            channels = _channels,
+            subscriptions = _subscriptions;
+
+- (id)initWithResourceModel:(SPResourceModel *)model
+{
+    self = [super initWithResourceModel:model];
+    if (self) {
+        id resourceModel = [self getResourceModel:@"account"];
+        _account = [[SPAccount alloc] initWithResourceModel:resourceModel];
+        resourceModel = [self getResourceModel:@"channels"];
+        _channels = [[SPChannels alloc] initWithResourceModel:resourceModel];
+        resourceModel = [self getResourceModel:@"subscriptions"];
+        _subscriptions = [[SPSubscriptions alloc] initWithResourceModel:resourceModel];
+    }
+    
+    return self;
+}
+
+- (SPResourceModel *)getResourceModel:(NSString *)resourceName
+{
+    SPResourceModel *resources = [_model getResourceModel:@"resources"];
+    return [resources getResourceModel:resourceName];
+}
 
 
 # pragma mark - SPHTTPResponseParser

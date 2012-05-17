@@ -18,4 +18,8 @@
     SPSubscriptions *_subscriptions;
 }
 
+@property(nonatomic, readonly) SPAccount *account;
+@property(nonatomic, readonly) SPChannels *channels;
+@property(nonatomic, readonly) SPSubscriptions *subscriptions;
+
 @end

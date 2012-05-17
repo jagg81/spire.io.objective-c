@@ -10,6 +10,7 @@
 
 @implementation Spire
 @synthesize api = _api,
+            session = _session,
             delegate = _delegate;
 
 - (id)init
@@ -86,7 +87,7 @@
 }
 
 # pragma mark - PRIVATE methods
-//- (void)performSelector:(SEL)selector withCallback:(SEL)callback
+
 - (void)initializeApiWithNextOperation:(SPOperation *)operation
 {
     [self registerOperation:operation];
@@ -108,7 +109,6 @@
 
 - (void)handleRegisterAccount:(SPHTTPResponse *)response
 {
-    //    NSLog(@"%@", response.responseData);
     if (![response isSuccessStatusCode]) {
         // throw an exception handle by caller
         @throw [NSException exceptionWithName:@"SpireException" reason:@"Register account failed" userInfo:nil];
@@ -120,42 +120,46 @@
 
 
 # pragma mark - PUBLIC methods - wrappers
+- (void)discoverWithDelegate:(id)delegate
+{
+    _api.delegate = delegate;
+    [_api discover];
+}
 
 - (void)startWithData:(id)data
 {
-    NSString *secretKey = [data objectForKey:@"secret_key"];
-//    _api.delegate = self;
-//    [_api createSession:secretKey];
+    _api.delegate = self;
+    [_api createSessionWithData:data];
     
-    NSLog(@"start Operation with secretKey => %@", secretKey);
-//    [self responseOperationDidFinishWithResponse:nil];
+    NSLog(@"Start Session Operation with data => %@", data);
 }
 
 - (void)registerWithData:(id)data
 {
-//    NSString *email = [data objectForKey:@"email"];
-//    NSString *password = [data objectForKey:@"password"];
-//    NSString *confirmationPassword = [data objectForKey:@"confirmation_password"];
-//    _api.delegate = self;
-    [_api createAccountWithData:data delegate:self andSelector:@selector(handleRegisterAccount:)];
+    _api.delegate = self;
+    [_api createAccountWithData:data];
     
-    NSLog(@"start Operation with secretKey => %@", nil);
-    //    [self responseOperationDidFinishWithResponse:nil];
+    NSLog(@"Register Account Operation with data => %@", data);
+}
+
+- (void)loginWithData:(id)data
+{
+    _api.delegate = self;
+    [_api loginWithData:data];
+    
+    NSLog(@"Login Operation with data => %@", data);
 }
 
 # pragma mark - PUBLIC methods - API
 
 - (void)discover
 {
-    _api.delegate = self;
-    [_api discover];
+    [self discoverWithDelegate:self];
 }
 
 - (void)start:(NSString *)secretKey
 {
-//    [self setSecretKey:secretKey];
-//    [self initializeApiWithCallback:@selector(start)];
-    NSDictionary *data = [NSDictionary dictionaryWithObject:secretKey forKey:@"secret_key"];
+    NSDictionary *data = [NSDictionary dictionaryWithObject:secretKey forKey:@"secret"];
     SPOperation *nextOperation = [[SPOperation alloc] initWithOperationData:data delegate:self andSelector:@selector(startWithData:)];
     [self initializeApiWithNextOperation:nextOperation];
 }
@@ -169,13 +173,27 @@
     [self initializeApiWithNextOperation:nextOperation];
 }
 
+- (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password
+{
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:    email, @"email",
+                                                                        password, @"password", nil];
+    SPOperation *nextOperation = [[SPOperation alloc] initWithOperationData:data delegate:self andSelector:@selector(loginWithData:)];
+    [self initializeApiWithNextOperation:nextOperation];
+
+}
+
 
 # pragma mark - SPHTTPResponseOperationDelegate
 
 - (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response
 {
     if ([self hasNextOperation]) {
-        [self performNextOperation];
+        if ([response isSuccessStatusCode]) {
+            [self performNextOperation];
+        }else{
+            // throw an exception handle by caller
+            @throw [NSException exceptionWithName:@"SpireException" reason:@"Register account failed" userInfo:nil];
+        }
         return;
     }
     
@@ -184,6 +202,54 @@
     if (_delegate && [_delegate respondsToSelector:@selector(responseOperationDidFinishWithResponse:)] ) {
         [_delegate responseOperationDidFinishWithResponse:response];
     }
+}
+
+# pragma mark - SPSpireApiDelegate
+- (void)discoverApiDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if ([self hasNextOperation]) { return; }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(discoverDidFinishWithResponse:)]) {
+        [_delegate discoverDidFinishWithResponse:response];
+    }
+}
+
+- (void)createSessionDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    _session = [[response parseResponse] retain];
+    
+    if ([self hasNextOperation]) { return; }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(startDidFinishWithResponse:)]) {
+        [_delegate startDidFinishWithResponse:response];
+    }
+}
+
+- (void)createAccountDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    _session = [[response parseResponse] retain];
+    
+    if ([self hasNextOperation]) { return; }
+        
+    if (_delegate && [_delegate respondsToSelector:@selector(registerAccountDidFinishWithResponse:)]) {
+        [_delegate registerAccountDidFinishWithResponse:response];
+    }
+}
+
+- (void)loginApiDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    _session = [[response parseResponse] retain];
+    
+    if ([self hasNextOperation]) { return; }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(loginDidFinishWithResponse:)]) {
+        [_delegate loginDidFinishWithResponse:response];
+    }
+}
+
+- (void)resetPasswordDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if ([self hasNextOperation]) { return; }
 }
 
 @end

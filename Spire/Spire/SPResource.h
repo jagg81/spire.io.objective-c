@@ -21,7 +21,7 @@
 
 - (id)getProperty:(NSString *)name;
 - (id)setProperty:(NSString *)name value:(id)value;
-
+- (SPResourceModel *)getResourceModel:(NSString *)resourceName;
 + (SPResourceModel *)createResourceModel:(id)rawModel;
 
 @end
@@ -33,6 +33,8 @@
 
 - (id)initWithResourceModel:(SPResourceModel *)model;
 - (id)initWithRawResourceModel:(id)rawModel;
+
+- (SPResourceModel *)getResourceModel:(NSString *)resourceName;
 
 + (SPResource *)createResourceWithRawModel:(id)rawModel;
 

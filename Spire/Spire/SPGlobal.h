@@ -13,6 +13,6 @@
 #define SP_RELEASE_SAFELY(__POINTER) { [__POINTER release]; __POINTER = nil; }
 
 // FLAGS
-#define SP_LOGGER_ON 1
+#define SP_LOGGER_ON 0
 
 #endif

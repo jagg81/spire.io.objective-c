@@ -16,14 +16,13 @@
 
 static NSString* API_VERSION = @"1.0";
 
-@interface SPApiDescriptionModel : SPResourceModel{
+@interface SPApiDescriptionModel : SPResourceModel<SPHTTPResponseParser>{
     SPResourceModel *_schema;
     SPResourceModel *_resources;
 }
 
 - (SPResourceModel *)getSchema;
 - (SPResourceModel *)getResources;
-
 - (NSString *)getMediaType:(NSString *)resource;
 @end
 
@@ -51,10 +50,23 @@ static NSString* API_VERSION = @"1.0";
 // main methods
 - (void)discover;
 - (void)createSession:(NSString *)accountSecret;
+- (void)createSessionWithData:(NSDictionary *)data;
 - (void)createAccountWithEmail:(NSString *)email password:(NSString *)password andConfirmationPassword:(NSString *)confirmationPassword;
-- (void)createAccountWithData:(NSDictionary *)data delegate:(id)delegate andSelector:(SEL)selector;
+- (void)createAccountWithData:(NSDictionary *)data;
+- (void)loginWithData:(NSDictionary *)data;
 - (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password;
 - (void)resetPassword;
 
 
+@end
+
+
+@protocol SPSpireApiDelegate <NSObject>
+
+@optional
+- (void)discoverApiDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)createSessionDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)createAccountDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)loginApiDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)resetPasswordDidFinishWithResponse:(SPHTTPResponse *)response;
 @end
