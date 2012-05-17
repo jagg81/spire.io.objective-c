@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPOperation.h"
 #import "SPApi.h"
 
 #ifndef Spire_SPGlobal_h
@@ -16,11 +17,18 @@
 //static NSString* SPIRE_URL = @"https://api.spire.io";
 static NSString* SPIRE_URL = @"http://localhost:1337";
 
-@interface Spire : NSObject{
+@interface Spire : NSObject<SPOperationManager>{
     NSString *_baseUrl;
     SPApi *_api;
     SPSession *_session;
+    id _delegate;
+    SPOperation *_operation;
+    
+    NSString *_secretKey;
 }
+
+@property(nonatomic, readonly) SPApi *api;
+@property(nonatomic, assign) id delegate;
 
 // constructors
 - (id)initWithBaseURL:(NSURL *)baseURL;

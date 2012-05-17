@@ -38,12 +38,14 @@
 
 -(void) dealloc{
     SP_RELEASE_SAFELY(_requestData);
+    SP_RELEASE_SAFELY(_response);
     [super dealloc];
 }
 
 -(void) send:(SPHTTPRequestData *)data response:(SPHTTPResponse *)response
 {
-    
+    [self setRequestData:data];
+    [self setResponse:response];
 }
 
 +(SPHTTPRequest *) createRequest{

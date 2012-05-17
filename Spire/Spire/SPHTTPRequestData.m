@@ -7,6 +7,7 @@
 //
 
 #import "SPHTTPRequestData.h"
+#import "AFJSONUtilities.h"
 
 @implementation SPHTTPRequestData
 
@@ -20,7 +21,8 @@
 {
     self = [super init];
     if (self) {
-        
+        _queryParams = [[NSMutableDictionary alloc] init];
+        _headers = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -38,6 +40,18 @@
     return [[[SPHTTPRequestData alloc] init] autorelease];
 }
 
+static NSString * SPJSONStringFromParameters(NSDictionary *parameters) {
+    NSError *error = nil;
+    NSData *JSONData = AFJSONEncode(parameters, &error);
+    
+    if (!error) {
+        return [[[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding] autorelease];
+    } else {
+        return nil;
+    }
+}
+
+
 -(NSURLRequest *)generateHTTPRequest{
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     for (id key in [_headers allKeys]) {
@@ -52,11 +66,41 @@
         case SPHTTPRequestTypePUT:
             [request setHTTPMethod:@"PUT"];
             break;
+        case SPHTTPRequestTypePOST:
+            [request setHTTPMethod:@"POST"];
+            break;
         default:
             break;
     }
     
+    if (_body) {
+        [request setHTTPBody:[SPJSONStringFromParameters(_body) dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
     return request;
+}
+
+
+- (void)setHTTPHeaderValue:(NSString *)value forKey:(NSString *)key
+{
+    if (_headers) {
+        [_headers setValue:value forKey:key];
+    }
+}
+
+- (void)setHTTPAcceptHeader:(NSString *)value
+{
+    [self setHTTPHeaderValue:value forKey:@"Accept"];
+}
+
+- (void)setHTTPContentTypeHeader:(NSString *)value
+{
+    [self setHTTPHeaderValue:value forKey:@"Content-Type"];    
+}
+
+- (void)setHTTPAuthorizationHeader:(NSString *)value
+{
+    [self setHTTPHeaderValue:value forKey:@"Authorization"];    
 }
 
 

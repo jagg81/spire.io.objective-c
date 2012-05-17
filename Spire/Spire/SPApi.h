@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SPSession.h"
+#import "SPHTTPRequestFactory.h"
 
 #ifndef Spire_SPGlobal_h
 #import "SPGlobal.h"
@@ -15,16 +16,32 @@
 
 static NSString* API_VERSION = @"1.0";
 
+@interface SPApiDescriptionModel : SPResourceModel{
+    SPResourceModel *_schema;
+    SPResourceModel *_resources;
+}
+
+- (SPResourceModel *)getSchema;
+- (SPResourceModel *)getResources;
+
+- (NSString *)getMediaType:(NSString *)resource;
+@end
+
+
 @interface SPApi : NSObject{
     NSString *_baseUrl;
     NSString *_version;
+    SPApiDescriptionModel *_apiDescription;
+    id _delegate;
 }
 
 @property(nonatomic, readonly) NSString *baseUrl;
 @property(nonatomic, readonly) NSString *version;
+@property(nonatomic, assign) id delegate;
+@property(nonatomic, readonly) SPApiDescriptionModel *apiDescription;
 
-- (void) setBaseUrl:(NSString *)baseUrl;
-- (void) setVersion:(NSString *)version;
+- (void)setBaseUrl:(NSString *)baseUrl;
+- (void)setVersion:(NSString *)version;
 
 // constructors
 - (id)initWithBaseURL:(NSURL *)baseURL;
@@ -33,9 +50,10 @@ static NSString* API_VERSION = @"1.0";
 
 // main methods
 - (void)discover;
-- (SPSession *)createSession:(NSString *)accountSecret;
-- (SPSession *)createAccountWithEmail:(NSString *)email password:(NSString *)password andConfirmationPassword:(NSString *)confirmationPassword;
-- (SPSession *)loginWithEmail:(NSString *)email andPassword:(NSString *)password;
+- (void)createSession:(NSString *)accountSecret;
+- (void)createAccountWithEmail:(NSString *)email password:(NSString *)password andConfirmationPassword:(NSString *)confirmationPassword;
+- (void)createAccountWithData:(NSDictionary *)data delegate:(id)delegate andSelector:(SEL)selector;
+- (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password;
 - (void)resetPassword;
 
 

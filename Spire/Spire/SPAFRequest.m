@@ -7,6 +7,7 @@
 //
 
 #import "SPAFRequest.h"
+#import "AFHTTPRequestOperationLogger.h"
 
 @implementation SPAFRequest
 
@@ -25,20 +26,16 @@
     [super dealloc];
 }
 
-
 -(void) send:(SPHTTPRequestData *)data response:(SPHTTPResponse *)response
 {
-    
-    NSURL *url = [NSURL URLWithString:@"https://gowalla.com/users/mattt.json"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"Name: %@ %@", [JSON valueForKeyPath:@"first_name"], [JSON valueForKeyPath:@"last_name"]);
-    } failure:nil];
-    
-    
-//    NSURLRequest *request = [data generateHTTPRequest];
-//    SPJSONRequestOperation *operation = [SPJSONRequestOperation SPJSONRequestOperationWithRequest:request delegate:response];
+    [super send:data response:response];
+
+#if SP_LOGGER_ON
+    [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+#endif
+        
+    NSURLRequest *request = [data generateHTTPRequest];
+    SPJSONRequestOperation *operation = [SPJSONRequestOperation SPJSONRequestOperationWithRequest:request delegate:response];
 //    [_queue setMaxConcurrentOperationCount:1];
     [operation start];
 }

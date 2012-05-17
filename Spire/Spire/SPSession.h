@@ -12,7 +12,7 @@
 #import "SPChannels.h"
 #import "SPSubscriptions.h"
 
-@interface SPSession : SPResource{
+@interface SPSession : SPResource<SPHTTPResponseParser>{
     SPAccount *_account;
     SPChannels *_channels;
     SPSubscriptions *_subscriptions;

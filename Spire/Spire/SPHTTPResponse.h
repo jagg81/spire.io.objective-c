@@ -7,18 +7,57 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPHTTPResponseOperationDelegate.h"
+#import "SPHTTPRequestOperationDelegate.h"
 
-@interface SPHTTPResponse : NSObject<SPHTTPResponseOperationDelegate>{
+#ifndef Spire_SPGlobal_h
+#import "SPGlobal.h"
+#endif
+
+@protocol SPHTTPResponseOperationDelegate;
+@protocol SPHTTPResponseParser;
+
+@interface SPHTTPResponse : NSObject<SPHTTPRequestOperationDelegate>{
     NSURLRequest *_request;
-    NSURLResponse *_response;
+    NSHTTPURLResponse *_response;
+    NSError *_error;
+    id _responseData;
     
     id _delegate;
     SEL _selector;
+//    id<SPHTTPResponseOperationDelegate> _responseDelegate;
+    Class _parser;
 }
 
--(id) initWithDelegate:(id)delegate selector:(SEL)selector;
+@property(nonatomic, readonly) NSURLRequest *request;
+@property(nonatomic, readonly) NSHTTPURLResponse *response;
+@property(nonatomic, readonly) NSError *error;
+@property(nonatomic, readonly) id responseData;
+//@property(nonatomic, assign) id responseDelegate;
+@property(nonatomic, assign) Class parser;
 
--(void) handleResponse:(id)data;
+- (id)initWithDelegate:(id)delegate;
+- (id)initWithDelegate:(id)delegate selector:(SEL)selector;
+
+/* This method handles methods from SPHTTPRequestOperationDelegate
+ * this could be overriden by subclasses
+ */
+- (void)handleResponse:(NSURLRequest *)request response:(NSHTTPURLResponse *)response error:(NSError *)error andResponseData:(id)data;
+- (id)parseResponse;
+- (BOOL)isSuccessStatusCode;
+
+
+@end
+
+@protocol SPHTTPResponseOperationDelegate <NSObject>
+
+@optional
+- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response;
+
+@end
+
+@protocol SPHTTPResponseParser <NSObject>
+
+@required
++ (id)parseHTTPResponse:(SPHTTPResponse *)response;
 
 @end

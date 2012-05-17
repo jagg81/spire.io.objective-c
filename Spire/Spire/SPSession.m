@@ -10,4 +10,11 @@
 
 @implementation SPSession
 
+
+# pragma mark - SPHTTPResponseParser
++ (id)parseHTTPResponse:(SPHTTPResponse *)response
+{
+    return [self createResourceWithRawModel:response.responseData];
+}
+
 @end

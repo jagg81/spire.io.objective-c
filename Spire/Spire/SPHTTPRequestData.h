@@ -19,23 +19,24 @@ typedef enum{
 
 @interface SPHTTPRequestData : NSObject{
     NSString *_url;
-    NSDictionary *_queryParams;
-    NSData *_body;
+    NSMutableDictionary *_queryParams;
+    id _body;
     SPHTTPRequestType _type;
-    NSDictionary *_headers;
+    NSMutableDictionary *_headers;
 }
 
 @property(nonatomic, retain) NSString *url;
-@property(nonatomic, retain) NSDictionary *queryParams;
-@property(nonatomic, retain) NSData *body;
+@property(readwrite, nonatomic, retain) NSDictionary *queryParams;
+@property(nonatomic, retain) id body;
 @property(nonatomic, assign) SPHTTPRequestType type;
-@property(nonatomic, retain) NSDictionary *headers;
+@property(readwrite, nonatomic, retain) NSDictionary *headers;
 
 
-+(SPHTTPRequestData *) createRequestData;
++ (SPHTTPRequestData *)createRequestData;
+- (NSURLRequest *)generateHTTPRequest;
 
--(NSURLRequest *) generateHTTPRequest;
-
-
-
+- (void)setHTTPHeaderValue:(NSString *)value forKey:(NSString *)key;
+- (void)setHTTPAcceptHeader:(NSString *)value;
+- (void)setHTTPContentTypeHeader:(NSString *)value;
+- (void)setHTTPAuthorizationHeader:(NSString *)value;
 @end

@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "AFJSONRequestOperation.h"
 #import "JSONKit.h"
-#import "SPHTTPResponseOperationDelegate.h"
+#import "SPHTTPRequestOperationDelegate.h"
 
 @interface SPJSONRequestOperation : AFJSONRequestOperation{
-    id<SPHTTPResponseOperationDelegate> _responseDelegate;
+    id<SPHTTPRequestOperationDelegate> _responseDelegate;
 }
 
-+ (SPJSONRequestOperation *)SPJSONRequestOperationWithRequest:(NSURLRequest *)urlRequest delegate:(id<SPHTTPResponseOperationDelegate>)delegate;
++ (SPJSONRequestOperation *)SPJSONRequestOperationWithRequest:(NSURLRequest *)urlRequest delegate:(id<SPHTTPRequestOperationDelegate>)delegate;
+
++ (SPJSONRequestOperation *)SPJSONRequestOperationWithRequest:(NSURLRequest *)urlRequest
+                                                      success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id JSON))success 
+                                                      failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON))failure;
 
 @end

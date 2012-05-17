@@ -7,9 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SPHTTPRequestFactory.h"
+
+#ifndef Spire_SPGlobal_h
+#import "SPGlobal.h"
+#endif
+
+@interface SPResourceModel : NSObject<SPHTTPResponseParser>{
+    id _rawModel;
+}
+
+- (id)initWithRawModel:(id)rawModel;
+
+- (id)getProperty:(NSString *)name;
+- (id)setProperty:(NSString *)name value:(id)value;
+
++ (SPResourceModel *)createResourceModel:(id)rawModel;
+
+@end
+
 
 @interface SPResource : NSObject{
-    
+    SPResourceModel *_model;
 }
+
+- (id)initWithResourceModel:(SPResourceModel *)model;
+- (id)initWithRawResourceModel:(id)rawModel;
+
++ (SPResource *)createResourceWithRawModel:(id)rawModel;
 
 @end

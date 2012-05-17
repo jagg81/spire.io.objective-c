@@ -11,9 +11,9 @@
 @implementation SPAFResponse
 
 
--(void) dealloc{
-    [super dealloc];
-}
+//-(void) dealloc{
+//    [super dealloc];
+//}
 
 
 //- (void)requestDidFinish:(NSURLRequest *)request response:(NSURLResponse *)response andData:(id)data{
