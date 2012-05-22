@@ -51,9 +51,19 @@ static NSString * SPJSONStringFromParameters(NSDictionary *parameters) {
     }
 }
 
++ (NSString *)prepareAuthorizationHeaderForCapability:(NSString *)capability
+{
+    return [NSString stringWithFormat:@"Capability %@", capability];
+}
+
 
 -(NSURLRequest *)generateHTTPRequest{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.url]];
+    NSURL *url = [NSURL URLWithString:self.url];
+    NSError *error = nil;
+    [url setResourceValues:_queryParams error:&error];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
     for (id key in [_headers allKeys]) {
         id value = [_headers valueForKey:key];
         [request addValue:value forHTTPHeaderField:key];
@@ -69,6 +79,9 @@ static NSString * SPJSONStringFromParameters(NSDictionary *parameters) {
         case SPHTTPRequestTypePOST:
             [request setHTTPMethod:@"POST"];
             break;
+        case SPHTTPRequestTypeDELETE:
+            [request setHTTPMethod:@"DELETE"];
+            break;
         default:
             break;
     }
@@ -80,6 +93,12 @@ static NSString * SPJSONStringFromParameters(NSDictionary *parameters) {
     return request;
 }
 
+- (void)setHTTPHeaders:(NSDictionary *)headers
+{
+    if (_headers && [_headers isKindOfClass:[NSMutableDictionary class]]) {
+        [_headers setValuesForKeysWithDictionary:headers];
+    }
+}
 
 - (void)setHTTPHeaderValue:(NSString *)value forKey:(NSString *)key
 {

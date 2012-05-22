@@ -8,51 +8,7 @@
 
 #import "SPApi.h"
 
-@implementation SPApiDescriptionModel
-
-- (id)initWithRawModel:(id)rawModel
-{
-    self = [super initWithRawModel:rawModel];
-    if (self) {
-        id rawData = [self getProperty:@"schema"];
-        _schema = [[SPResourceModel alloc] initWithRawModel:rawData];
-        rawData = [self getProperty:@"resources"];
-        _resources = [[SPResourceModel alloc] initWithRawModel:rawData];
-    }
-    
-    return self;
-}
-
-- (void)dealloc{
-    SP_RELEASE_SAFELY(_schema);
-    SP_RELEASE_SAFELY(_resources);
-    [super dealloc];
-}
-
-- (SPResourceModel *)getSchema
-{
-    return _schema;
-}
-
-- (SPResourceModel *)getResources
-{
-    return _resources;
-}
-
-- (NSString *)getMediaType:(NSString *)resource
-{
-    return [[[_schema getProperty:API_VERSION] objectForKey:resource] objectForKey:@"mediaType"];
-}
-
-# pragma mark - SPHTTPResponseParser
-+ (id)parseHTTPResponse:(SPHTTPResponse *)response
-{
-    return [self createResourceModel:response.responseData];
-}
-
-
-@end
-
+NSString* SP_API_VERSION = @"1.0";
 
 @implementation SPApi
 @synthesize baseUrl = _baseUrl,
@@ -76,7 +32,7 @@
     self = [super init];
     if (self) {
         _baseUrl = [baseStringURL copy];
-        _version = API_VERSION;
+        _version = SP_API_VERSION;
     }
     
     return self;
@@ -121,14 +77,17 @@
     _apiDescription = [model retain];
 }
 
-# pragma mark - SPHTTPResponseOperationDelegate
 
-- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response
+
+
+
+# pragma mark - SPHTTPResponseOperationDelegate
+- (void)operationDidFinishWithResponse:(SPHTTPResponse *)response;
 {
     // do any custom initialization here
     NSLog(@"API Response delegate");
-    if (_delegate && [_delegate respondsToSelector:@selector(responseOperationDidFinishWithResponse:)] ) {
-        [_delegate responseOperationDidFinishWithResponse:response];
+    if (_delegate && [_delegate respondsToSelector:@selector(operationDidFinishWithResponse:)] ) {
+        [_delegate operationDidFinishWithResponse:response];
     }
 }
 
@@ -139,7 +98,7 @@
         @throw [NSException exceptionWithName:@"SpireException" reason:@"discover failed" userInfo:nil];
     }
         
-    SPResourceModel *apiDescription = [response parseResponse];
+    SPResourceModel *apiDescription = [response parseResponseWithInfo:nil];
     [self setApiDescriptionModel:apiDescription];
     
     if (_delegate && [_delegate respondsToSelector:@selector(discoverApiDidFinishWithResponse:)] ) {
@@ -165,8 +124,8 @@
     SPHTTPRequestData *requestData = [SPHTTPRequestData createRequestData];
     requestData.type = SPHTTPRequestTypePOST;
     requestData.url = [[self getResourceModel:@"accounts"] getProperty:@"url"];    
-    NSString *contentType = [_apiDescription getMediaType:@"account"];
-    NSString *accept = [_apiDescription getMediaType:@"session"];
+    NSString *contentType = [[_apiDescription getSchema] getMediaType:@"account"];
+    NSString *accept = [[_apiDescription getSchema] getMediaType:@"session"];
     requestData.headers = [NSDictionary dictionaryWithObjectsAndKeys:   accept, @"Accept", 
                                                                         contentType, @"Content-Type", nil];
     requestData.body = data;
@@ -190,8 +149,8 @@
     SPHTTPRequestData *requestData = [SPHTTPRequestData createRequestData];
     requestData.type = SPHTTPRequestTypePOST;
     requestData.url = [[[_apiDescription getResources] getResourceModel:@"sessions"] getProperty:@"url"];    
-    NSString *contentType = [_apiDescription getMediaType:@"account"];
-    NSString *accept = [_apiDescription getMediaType:@"session"];
+    NSString *contentType = [[_apiDescription getSchema] getMediaType:@"account"];
+    NSString *accept = [[_apiDescription getSchema] getMediaType:@"session"];
     requestData.headers = [NSDictionary dictionaryWithObjectsAndKeys:   accept, @"Accept", 
                            contentType, @"Content-Type", nil];
     requestData.body = data;

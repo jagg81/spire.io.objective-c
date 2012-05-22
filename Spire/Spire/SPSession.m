@@ -13,16 +13,21 @@
             channels = _channels,
             subscriptions = _subscriptions;
 
-- (id)initWithResourceModel:(SPResourceModel *)model
+- (id)initWithResourceModel:(SPResourceModel *)model apiSchemaModel:(SPApiSchemaModel *)schema
 {
-    self = [super initWithResourceModel:model];
+    self = [super initWithResourceModel:model apiSchemaModel:schema];
     if (self) {
         id resourceModel = [self getResourceModel:@"account"];
-        _account = [[SPAccount alloc] initWithResourceModel:resourceModel];
+        _account = [[SPAccount alloc] initWithResourceModel:resourceModel apiSchemaModel:schema];
+        _account.delegate = self;
+        
         resourceModel = [self getResourceModel:@"channels"];
-        _channels = [[SPChannels alloc] initWithResourceModel:resourceModel];
+        _channels = [[SPChannels alloc] initWithResourceModel:resourceModel apiSchemaModel:schema];
+        _channels.delegate = self;
+        
         resourceModel = [self getResourceModel:@"subscriptions"];
-        _subscriptions = [[SPSubscriptions alloc] initWithResourceModel:resourceModel];
+        _subscriptions = [[SPSubscriptions alloc] initWithResourceModel:resourceModel apiSchemaModel:schema];
+        _subscriptions.delegate = self;
     }
     
     return self;
@@ -36,9 +41,23 @@
 
 
 # pragma mark - SPHTTPResponseParser
-+ (id)parseHTTPResponse:(SPHTTPResponse *)response
++ (id)parseHTTPResponse:(SPHTTPResponse *)response withInfo:(id)info
 {
-    return [self createResourceWithRawModel:response.responseData];
+    return [self createResourceWithRawModel:response.responseData apiSchemaModel:info];
+}
+
+- (void)retrieveChannels
+{
+    _channels.delegate = self;
+    [_channels doGet];
+}
+
+# pragma mark - SPHTTPChannelsDelegate
+- (void)getChannelsDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(retrieveChannelsDidFinishWithResponse:)] ) {
+        [_delegate retrieveChannelsDidFinishWithResponse:response];
+    }
 }
 
 @end

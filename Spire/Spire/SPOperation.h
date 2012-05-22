@@ -20,6 +20,8 @@ typedef enum {
 
 typedef unsigned short SPOperationState;
 
+@class SPHTTPResponse;
+
 @interface SPOperation : NSOperation{
     NSDictionary *_data;
     id _delegate;
@@ -36,6 +38,7 @@ typedef unsigned short SPOperationState;
 @protocol SPOperationManager <NSObject>
 
 @required
+- (void)operationDidFinishWithResponse:(SPHTTPResponse *)response;
 - (void)registerOperation:(SPOperation *)operation;
 - (void)performNextOperation;
 - (BOOL)hasNextOperation;

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF18B74D156726270059E168 /* SPResourceModel.h in Headers */ = {isa = PBXBuildFile; fileRef = CF18B74B156726270059E168 /* SPResourceModel.h */; };
+		CF18B74E156726270059E168 /* SPResourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF18B74C156726270059E168 /* SPResourceModel.m */; };
+		CF18B750156C0F210059E168 /* SPResourceDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = CF18B74F156C0F1F0059E168 /* SPResourceDelegate.h */; };
 		CF515EF2154F59AA00542D92 /* SPHTTPHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515EF0154F59AA00542D92 /* SPHTTPHeaders.h */; };
 		CF515EF3154F59AA00542D92 /* SPHTTPHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = CF515EF1154F59AA00542D92 /* SPHTTPHeaders.m */; };
 		CF515F1D154F6EE800542D92 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = CF515F08154F6EE800542D92 /* AFHTTPClient.h */; };
@@ -92,6 +95,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF18B74B156726270059E168 /* SPResourceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPResourceModel.h; sourceTree = "<group>"; };
+		CF18B74C156726270059E168 /* SPResourceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPResourceModel.m; sourceTree = "<group>"; };
+		CF18B74F156C0F1F0059E168 /* SPResourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPResourceDelegate.h; sourceTree = "<group>"; };
 		CF515EF0154F59AA00542D92 /* SPHTTPHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPHeaders.h; sourceTree = "<group>"; };
 		CF515EF1154F59AA00542D92 /* SPHTTPHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPHeaders.m; sourceTree = "<group>"; };
 		CF515F08154F6EE800542D92 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -193,6 +199,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF18B749156725FD0059E168 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF18B74B156726270059E168 /* SPResourceModel.h */,
+				CF18B74C156726270059E168 /* SPResourceModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		CF515F06154F6E2600542D92 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,10 +346,12 @@
 		CF69759F154B221B00D7E4B4 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				CF18B749156725FD0059E168 /* Models */,
 				CF6975A0154B22D400D7E4B4 /* SPApi.h */,
 				CF6975A1154B22D400D7E4B4 /* SPApi.m */,
 				CF6975A8154B270400D7E4B4 /* SPResource.h */,
 				CF6975A9154B270400D7E4B4 /* SPResource.m */,
+				CF18B74F156C0F1F0059E168 /* SPResourceDelegate.h */,
 				CF6975AC154B2A0B00D7E4B4 /* SPSession.h */,
 				CF6975AD154B2A0B00D7E4B4 /* SPSession.m */,
 				CF6975B0154B2AA300D7E4B4 /* SPChannel.h */,
@@ -436,6 +453,8 @@
 				CFA90566155867A60022EEE0 /* Spire.h in Headers */,
 				CFA90568155868680022EEE0 /* SpireClient.h in Headers */,
 				CFA7A1341561B28000D83426 /* SPOperation.h in Headers */,
+				CF18B74D156726270059E168 /* SPResourceModel.h in Headers */,
+				CF18B750156C0F210059E168 /* SPResourceDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +586,7 @@
 				CFB9C4ED155345FC00AB08EA /* SPHTTPRequestFactory.m in Sources */,
 				CFA9056515585F170022EEE0 /* AFHTTPRequestOperationLogger.m in Sources */,
 				CFA7A1351561B28000D83426 /* SPOperation.m in Sources */,
+				CF18B74E156726270059E168 /* SPResourceModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

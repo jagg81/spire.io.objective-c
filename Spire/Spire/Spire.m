@@ -107,16 +107,16 @@
     _secretKey = [secretKey copy];
 }
 
-- (void)handleRegisterAccount:(SPHTTPResponse *)response
-{
-    if (![response isSuccessStatusCode]) {
-        // throw an exception handle by caller
-        @throw [NSException exceptionWithName:@"SpireException" reason:@"Register account failed" userInfo:nil];
-    }
-    
-    response.parser = [SPSession class];
-    _session = [response parseResponse];
-}
+//- (void)handleRegisterAccount:(SPHTTPResponse *)response
+//{
+//    if (![response isSuccessStatusCode]) {
+//        // throw an exception handle by caller
+//        @throw [NSException exceptionWithName:@"SpireException" reason:@"Register account failed" userInfo:nil];
+//    }
+//    
+//    response.parser = [SPSession class];
+//    _session = [response parseResponse];
+//}
 
 
 # pragma mark - PUBLIC methods - wrappers
@@ -179,13 +179,17 @@
                                                                         password, @"password", nil];
     SPOperation *nextOperation = [[SPOperation alloc] initWithOperationData:data delegate:self andSelector:@selector(loginWithData:)];
     [self initializeApiWithNextOperation:nextOperation];
+}
 
+- (void)channels
+{
+    _session.delegate = self;
+    [_session retrieveChannels];
 }
 
 
 # pragma mark - SPHTTPResponseOperationDelegate
-
-- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response
+- (void)operationDidFinishWithResponse:(SPHTTPResponse *)response;
 {
     if ([self hasNextOperation]) {
         if ([response isSuccessStatusCode]) {
@@ -199,8 +203,8 @@
     
     // do any custom initialization here
     NSLog(@"Spire Response delegate");
-    if (_delegate && [_delegate respondsToSelector:@selector(responseOperationDidFinishWithResponse:)] ) {
-        [_delegate responseOperationDidFinishWithResponse:response];
+    if (_delegate && [_delegate respondsToSelector:@selector(operationDidFinishWithResponse:)] ) {
+        [_delegate operationDidFinishWithResponse:response];
     }
 }
 
@@ -216,7 +220,7 @@
 
 - (void)createSessionDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    _session = [[response parseResponse] retain];
+    _session = [[response parseResponseWithInfo:[_api.apiDescription getSchema]] retain];
     
     if ([self hasNextOperation]) { return; }
     
@@ -227,7 +231,7 @@
 
 - (void)createAccountDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    _session = [[response parseResponse] retain];
+    _session = [[response parseResponseWithInfo:[_api.apiDescription getSchema]] retain];
     
     if ([self hasNextOperation]) { return; }
         
@@ -238,7 +242,7 @@
 
 - (void)loginApiDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    _session = [[response parseResponse] retain];
+    _session = [[response parseResponseWithInfo:[_api.apiDescription getSchema]] retain];
     
     if ([self hasNextOperation]) { return; }
     
@@ -250,6 +254,14 @@
 - (void)resetPasswordDidFinishWithResponse:(SPHTTPResponse *)response
 {
     if ([self hasNextOperation]) { return; }
+}
+
+# pragma mark - SPSessionDelegate
+- (void)retrieveChannelsDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(channelsDidFinishWithResponse:)] ) {
+        [_delegate channelsDidFinishWithResponse:response];
+    }
 }
 
 @end

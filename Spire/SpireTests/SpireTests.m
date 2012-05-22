@@ -61,7 +61,7 @@
     [super tearDown];
 }
 
-//- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response
+//- (void)operationDidFinishWithResponse:(SPHTTPResponse *)response
 //{
 //    NSLog(@"SpireTests Response complete");
 //    _response = response;
@@ -92,13 +92,19 @@
 
 - (void)registerAccountDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    [self handleResponse:response];    
+    [self handleResponse:response];
 }
 
 - (void)deleteAccountDidFinishWithResponse:(SPHTTPResponse *)response
 {
+    [self handleResponse:response];
+}
+
+- (void)channelsDidFinishWithResponse:(SPHTTPResponse *)response
+{
     [self handleResponse:response];    
 }
+
 
 - (void)testDiscover
 {
@@ -118,6 +124,8 @@
     [spire registerWithEmail:email password:password andConfirmation:password];
     STAssertTrue([self waitForCompletion:30.0], @"Failed to register new account");
     STAssertNotNil(spire.session, @"Session object is missing");
+    STAssertNotNil(spire.session.account, @"Account object is missing");
+    STAssertNotNil([spire.session.account getSecret], @"Account secret key is missing");
 }
 
 - (void)testStart
@@ -134,6 +142,17 @@
     [spire loginWithEmail:_email andPassword:_password];
     STAssertTrue([self waitForCompletion:30.0], @"Failed to start session with secret key");
     STAssertNotNil(spire.session, @"Session object is missing");
+    STAssertNotNil (spire.session.account, @"Account object is missing");
+    STAssertTrue([_secret isEqualToString:[spire.session.account getSecret]], @"Account secret is not the same");
+}
+
+- (void)testChannels
+{
+    [_spire channels];
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to start session with secret key");
+    STAssertNotNil(_spire.session.channels, @"Channels object is missing");
+    STAssertNotNil([_spire.session.channels getUrl], @"Channels url is missing");
+    STAssertNotNil([_spire.session.channels getCapability], @"Channels capability is missing");
 }
 
 

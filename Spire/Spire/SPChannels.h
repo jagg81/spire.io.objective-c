@@ -9,6 +9,15 @@
 #import "SPResource.h"
 #import "SPChannel.h"
 
-@interface SPChannels : SPResource
+@interface SPChannels : SPResource{
+    NSMutableDictionary *_channelCollection;
+}
+
+@end
+
+@protocol SPChannelsDelegate <NSObject>
+
+@optional
+- (void)getChannelsDidFinishWithResponse:(SPHTTPResponse *)response;
 
 @end

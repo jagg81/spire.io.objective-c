@@ -34,8 +34,10 @@ typedef enum{
 
 + (SPHTTPRequestData *)createRequestData;
 - (NSURLRequest *)generateHTTPRequest;
++ (NSString *)prepareAuthorizationHeaderForCapability:(NSString *)capability;
 
 - (void)setHTTPHeaderValue:(NSString *)value forKey:(NSString *)key;
+- (void)setHTTPHeaders:(NSDictionary *)headers;
 - (void)setHTTPAcceptHeader:(NSString *)value;
 - (void)setHTTPContentTypeHeader:(NSString *)value;
 - (void)setHTTPAuthorizationHeader:(NSString *)value;

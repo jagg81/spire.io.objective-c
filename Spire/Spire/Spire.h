@@ -17,7 +17,7 @@
 //static NSString* SPIRE_URL = @"https://api.spire.io";
 static NSString* SPIRE_URL = @"http://localhost:1337";
 
-@interface Spire : NSObject<SPOperationManager, SPSpireApiDelegate>{
+@interface Spire : NSObject<SPOperationManager, SPSpireApiDelegate, SPSessionDelegate>{
     NSString *_baseUrl;
     SPApi *_api;
     SPSession *_session;
@@ -45,11 +45,11 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 - (void)deleteAccount;
 
 // wrapper for resources
-- (SPChannels *)channels;
-- (SPChannel *)createChannel;
-- (SPSubscriptions *)subscriptions;
-- (SPSubscription *)subscribe:(NSString *)subscriptionName channels:(NSArray *)channels;
-- (SPSubscription *)subscribe:(NSString *)subscriptionName, ...;
+- (void)channels;
+- (void)createChannel;
+- (void)subscriptions;
+- (void)subscribe:(NSString *)subscriptionName channels:(NSArray *)channels;
+- (void)subscribe:(NSString *)subscriptionName, ...;
 
 @end
 
@@ -62,4 +62,10 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 - (void)loginDidFinishWithResponse:(SPHTTPResponse *)response;
 - (void)registerAccountDidFinishWithResponse:(SPHTTPResponse *)response;
 - (void)deleteAccountDidFinishWithResponse:(SPHTTPResponse *)response;
+
+// wrapper for resources
+- (void)channelsDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)createChannelDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)subscriptionsDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)subscribeDidFinishWithResponse:(SPHTTPResponse *)response;
 @end

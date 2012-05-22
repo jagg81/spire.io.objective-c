@@ -8,24 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "SPSession.h"
-#import "SPHTTPRequestFactory.h"
 
-#ifndef Spire_SPGlobal_h
-#import "SPGlobal.h"
-#endif
 
-static NSString* API_VERSION = @"1.0";
-
-@interface SPApiDescriptionModel : SPResourceModel<SPHTTPResponseParser>{
-    SPResourceModel *_schema;
-    SPResourceModel *_resources;
-}
-
-- (SPResourceModel *)getSchema;
-- (SPResourceModel *)getResources;
-- (NSString *)getMediaType:(NSString *)resource;
-@end
-
+extern NSString* SP_API_VERSION;
 
 @interface SPApi : NSObject{
     NSString *_baseUrl;

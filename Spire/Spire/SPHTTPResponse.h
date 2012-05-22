@@ -13,7 +13,7 @@
 #import "SPGlobal.h"
 #endif
 
-@protocol SPHTTPResponseOperationDelegate;
+//@protocol SPHTTPResponseOperationDelegate;
 @protocol SPHTTPResponseParser;
 
 @interface SPHTTPResponse : NSObject<SPHTTPRequestOperationDelegate>{
@@ -42,22 +42,22 @@
  * this could be overriden by subclasses
  */
 - (void)handleResponse:(NSURLRequest *)request response:(NSHTTPURLResponse *)response error:(NSError *)error andResponseData:(id)data;
-- (id)parseResponse;
+- (id)parseResponseWithInfo:(id)info;
 - (BOOL)isSuccessStatusCode;
 
 
 @end
 
-@protocol SPHTTPResponseOperationDelegate <NSObject>
-
-@optional
-- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response;
-
-@end
+//@protocol SPHTTPResponseOperationDelegate <NSObject>
+//
+//@optional
+//- (void)responseOperationDidFinishWithResponse:(SPHTTPResponse *)response;
+//
+//@end
 
 @protocol SPHTTPResponseParser <NSObject>
 
 @required
-+ (id)parseHTTPResponse:(SPHTTPResponse *)response;
++ (id)parseHTTPResponse:(SPHTTPResponse *)response withInfo:(id)info;
 
 @end

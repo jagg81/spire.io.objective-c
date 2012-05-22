@@ -7,35 +7,51 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SPHTTPRequestFactory.h"
+#import "SPResourceModel.h"
+#import "SPResourceDelegate.h"
 
-#ifndef Spire_SPGlobal_h
-#import "SPGlobal.h"
-#endif
-
-@interface SPResourceModel : NSObject<SPHTTPResponseParser>{
-    id _rawModel;
-}
-
-- (id)initWithRawModel:(id)rawModel;
-
-- (id)getProperty:(NSString *)name;
-- (id)setProperty:(NSString *)name value:(id)value;
-- (SPResourceModel *)getResourceModel:(NSString *)resourceName;
-+ (SPResourceModel *)createResourceModel:(id)rawModel;
-
-@end
-
-
-@interface SPResource : NSObject{
+@interface SPResource : NSObject<SPResourceDelegate>{
     SPResourceModel *_model;
+    SPApiSchemaModel *_schema;
+    SPResourceCapabilityModel *_capabilities;
+    id _delegate;
 }
 
-- (id)initWithResourceModel:(SPResourceModel *)model;
-- (id)initWithRawResourceModel:(id)rawModel;
+@property(nonatomic, assign) id delegate;
 
+/*
+ *  Custom initialization method to be overriden by subclasses.
+ *  This method is called by constructors
+ */
+- (void)initialize;
+- (void)updateModel:(id)rawModel;
+- (NSString *)getResourceName;
+
+/*
+ *  Constructors
+ */
+- (id)initWithResourceModel:(SPResourceModel *)model apiSchemaModel:(SPApiSchemaModel *)schema;
+- (id)initWithRawResourceModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema;
 - (SPResourceModel *)getResourceModel:(NSString *)resourceName;
++ (SPResource *)createResourceWithRawModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema;
 
-+ (SPResource *)createResourceWithRawModel:(id)rawModel;
+/*
+ *  Properties
+ */
+- (NSString *)getUrl;
+- (void)setUrl:(NSString *)url;
+- (NSString *)getMediaType;
+//- (void)setMediaType:(NSString *)mediaType;
+// TODO: this should handle capability type objects instead of strings
+- (SPResourceCapabilityModel *)getCapability;
+- (void)setCapability:(NSString *)capability;
+- (NSString *)getType;
+- (NSString *)getName;
+
+- (void)doGet;
+- (void)doGetWithParameters:(NSDictionary *)params andHeaders:(NSDictionary *)headers;
+- (void)doUpdate;
+- (void)doDelete;
+- (void)doPost;
 
 @end

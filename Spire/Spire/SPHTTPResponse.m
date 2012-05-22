@@ -54,8 +54,8 @@
         }
     }
     
-    if (_delegate && [_delegate respondsToSelector:@selector(responseOperationDidFinishWithResponse:)] ) {
-        [_delegate responseOperationDidFinishWithResponse:self];
+    if (_delegate && [_delegate respondsToSelector:@selector(operationDidFinishWithResponse:)] ) {
+        [_delegate performSelector:@selector(operationDidFinishWithResponse:) withObject:self];
     }
     
     // notifiy response delegate
@@ -84,10 +84,10 @@
     [self sendResponse];
 }
 
-- (id)parseResponse
+- (id)parseResponseWithInfo:(id)info
 {
     if ([_parser conformsToProtocol:@protocol(SPHTTPResponseParser)]) {
-        return [_parser parseHTTPResponse:self];
+        return [_parser parseHTTPResponse:self withInfo:info];
     }
     return nil;
 }

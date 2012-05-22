@@ -9,7 +9,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "SpireClient.h"
 
-@interface SpireTests : SenTestCase<SPHTTPResponseOperationDelegate>{
+@interface SpireTests : SenTestCase{
     Spire *_spire;
     BOOL _done;
     NSString *_email;

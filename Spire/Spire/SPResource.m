@@ -8,42 +8,24 @@
 
 #import "SPResource.h"
 
-@implementation SPResourceModel
-
-- (id)initWithRawModel:(id)rawModel
-{
-    self = [super init];
-    if (self) {
-        _rawModel = [rawModel retain];
-    }
-    
-    return self;
-}
-
-- (void)dealloc{
-    SP_RELEASE_SAFELY(_rawModel);
-    [super dealloc];
-}
-
-- (id)getProperty:(NSString *)name
-{
-    return [_rawModel objectForKey:name];
-}
-
-+ (SPResourceModel *)createResourceModel:(id)rawModel
-{
-    return [[[self alloc] initWithRawModel:rawModel] autorelease];
-}
-
-- (SPResourceModel *)getResourceModel:(NSString *)resourceName
-{
-    id rawData = [self getProperty:resourceName];
-    return [[self class] createResourceModel:rawData];
-}
-
-@end
-
 @implementation SPResource
+@synthesize delegate = _delegate;
+
+- (void)initialize
+{
+    id rawCaps = [_model getProperty:@"capabilities"];
+    _capabilities = [[SPResourceCapabilityModel alloc] initWithRawModel:rawCaps];
+}
+
+- (void)updateModel:(id)rawModel
+{
+    
+}
+
+- (NSString *)getResourceName
+{
+    return [NSString stringWithString:@"resource"];
+}
 
 - (id)init
 {
@@ -56,20 +38,22 @@
     return self;
 }
 
-- (id)initWithResourceModel:(SPResourceModel *)model
+- (id)initWithResourceModel:(SPResourceModel *)model apiSchemaModel:(SPApiSchemaModel *)schema
 {
     self = [super init];
     if (self) {
         _model = [model retain];
+        _schema = [schema retain];
+        [self initialize];
     }
     
     return self;
 }
 
-- (id)initWithRawResourceModel:(id)rawModel
+- (id)initWithRawResourceModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema
 {
     SPResourceModel *model = [SPResourceModel createResourceModel:rawModel];
-    self = [self initWithResourceModel:model];
+    self = [self initWithResourceModel:model apiSchemaModel:schema];
     if (self) {
         
     }
@@ -79,12 +63,54 @@
 
 - (void)dealloc{
     SP_RELEASE_SAFELY(_model);
+    SP_RELEASE_SAFELY(_capabilities);
     [super dealloc];
 }
 
-+ (SPResource *)createResourceWithRawModel:(id)rawModel
+# pragma mark - Properties
+- (NSString *)getUrl
 {
-    return [[[self alloc] initWithRawResourceModel:rawModel] autorelease];
+    return [_model getProperty:@"url"];
+}
+
+- (void)setUrl:(NSString *)url
+{
+    [_model setProperty:@"url" value:url];
+}
+
+- (NSString *)getMediaType
+{
+    NSString *resourceName = [self getResourceName];
+    return [_schema getMediaType:resourceName];
+}
+
+// TODO: this should handle capability type objects instead of strings
+- (SPResourceCapabilityModel *)getCapability
+{
+    return _capabilities;
+}
+
+//- (void)setCapability:(NSString *)capability;
+- (NSString *)getType
+{
+    return [_model getProperty:@"type"];
+}
+
+- (NSString *)getName
+{
+    return [_model getProperty:@"name"];
+}
+
+# pragma mark - SPHTTPResponseParser
++ (id)parseHTTPResponse:(SPHTTPResponse *)response withInfo:(id)info
+{
+    return [self createResourceWithRawModel:response.responseData apiSchemaModel:info];
+}
+
+# pragma mark - Public API
++ (SPResource *)createResourceWithRawModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema
+{
+    return [[[self alloc] initWithRawResourceModel:rawModel apiSchemaModel:schema] autorelease];
 }
 
 - (SPResourceModel *)getResourceModel:(NSString *)resourceName
@@ -92,12 +118,100 @@
     return [_model getResourceModel:resourceName];
 }
 
-
-# pragma mark - SPHTTPResponseParser
-+ (id)parseHTTPResponse:(SPHTTPResponse *)response
+# pragma mark - SPResourceDelegate - HTTP callback handlers
+- (void)getResourceDidFinishWithResponse:(id)response
 {
-    return [self createResourceWithRawModel:response.responseData];
+    NSLog(@"GET Resource");
+    SPHTTPResponse *httpResponse = response;
+    [self updateModel:httpResponse.responseData];
 }
+
+- (void)updateResourceDidFinishWithResponse:(id)response
+{
+    NSLog(@"UPDATE Resource");    
+}
+
+- (void)deleteResourceDidFinishWithResponse:(id)response
+{
+    NSLog(@"DELETE Resource");
+}
+
+- (void)postResourceDidFinishWithResponse:(id)response
+{
+    NSLog(@"POST Resource");    
+}
+
+# pragma mark - HTTP wrappers
+- (SPHTTPRequestData *)createRequestDataWithQueryParams:(NSDictionary *)params content:(NSDictionary  *)content headers:(NSDictionary *)headers andType:(SPHTTPRequestType)type
+{
+    SPHTTPRequestData *data = [SPHTTPRequestData createRequestData];
+    data.type = type;
+    data.queryParams = params;
+    data.body = content;
+    NSString *accept = [self getMediaType];
+    [data setHTTPAcceptHeader:accept];
+    // this might not be needed for GET, but for reusability we included since every other method type should needed
+    [data setHTTPContentTypeHeader:[self getMediaType]];
+    [data setHTTPAuthorizationHeader:[_capabilities getCapabilityForRequest:data.type]];
+    [data setHTTPHeaders:headers];
+    return data;
+}
+
+- (void)doGetWithParameters:(NSDictionary *)params andHeaders:(NSDictionary *)headers
+{
+    SPHTTPRequestData *data = [self createRequestDataWithQueryParams:params content:nil headers:headers andType:SPHTTPRequestTypeGET];
+    data.url = [self getUrl];
+    
+    SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
+    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:self selector:@selector(getResourceDidFinishWithResponse:)] autorelease];
+    response.parser = [self class];
+    [request send:data response:response];
+}
+
+- (void)doGet
+{
+    [self doGetWithParameters:nil andHeaders:nil];
+}
+
+- (void)doUpdate
+{
+    SPHTTPRequestData *data = [self createRequestDataWithQueryParams:nil content:_model.rawModel headers:nil andType:SPHTTPRequestTypePUT];
+    data.url = [self getUrl];
+    
+    SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
+    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:self selector:@selector(updateResourceDidFinishWithResponse:)] autorelease];
+    response.parser = [self class];
+    [request send:data response:response];
+}
+
+- (void)doDelete
+{
+    SPHTTPRequestData *data = [self createRequestDataWithQueryParams:nil content:nil headers:nil andType:SPHTTPRequestTypeDELETE];
+    data.url = [self getUrl];
+    
+    SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
+    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:self selector:@selector(deleteResourceDidFinishWithResponse:)] autorelease];
+    response.parser = [self class];
+    [request send:data response:response];
+}
+
+- (void)doPostWithContent:(NSDictionary *)content andHeaders:(NSDictionary *)headers
+{
+    SPHTTPRequestData *data = [self createRequestDataWithQueryParams:nil content:content headers:nil andType:SPHTTPRequestTypePOST];
+    data.url = [self getUrl];
+    
+    SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];
+    SPHTTPResponse *response = [[[SPHTTPResponse alloc] initWithDelegate:self selector:@selector(postResourceDidFinishWithResponse:)] autorelease];
+    response.parser = [self class];
+    [request send:data response:response];
+}
+
+- (void)doPost:(NSDictionary *)content
+{
+    [self doGetWithParameters:content andHeaders:nil];
+}
+
+
 
 @end
 
