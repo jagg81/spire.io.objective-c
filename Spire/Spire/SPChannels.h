@@ -9,9 +9,12 @@
 #import "SPResource.h"
 #import "SPChannel.h"
 
-@interface SPChannels : SPResource{
+@interface SPChannels : SPResource<SPResourceCollectionProtocol>{
     NSMutableDictionary *_channelCollection;
 }
+
+- (SPChannel *)getChannel:(NSString *)name;
+- (void)createChannel:(NSString *)name;
 
 @end
 
@@ -19,5 +22,6 @@
 
 @optional
 - (void)getChannelsDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)createChannelDidFinishWithResponse:(SPHTTPResponse *)response;
 
 @end

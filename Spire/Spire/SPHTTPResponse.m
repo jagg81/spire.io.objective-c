@@ -84,12 +84,17 @@
     [self sendResponse];
 }
 
-- (id)parseResponseWithInfo:(id)info
+- (id)parseResponseWithParser:(Class)parser andInfo:(id)info
 {
-    if ([_parser conformsToProtocol:@protocol(SPHTTPResponseParser)]) {
-        return [_parser parseHTTPResponse:self withInfo:info];
+    if (parser && [parser conformsToProtocol:@protocol(SPHTTPResponseParser)]) {
+        return [parser parseHTTPResponse:self withInfo:info];
     }
     return nil;
+}
+
+- (id)parseResponseWithInfo:(id)info
+{
+    return [self parseResponseWithParser:_parser andInfo:info];
 }
 
 # pragma mark - SPHTTPResponseOperationDelegate
@@ -112,6 +117,14 @@
         return YES;
     }
     return NO;
+}
+
+- (NSInteger)statusCode
+{
+    if (_response) {
+        return [_response statusCode];
+    }
+    return -1;
 }
 
 @end

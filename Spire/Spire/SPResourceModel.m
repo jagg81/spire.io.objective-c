@@ -130,13 +130,13 @@
             capability = [self getCapabilityForType:@"get"];
             break;
         case SPHTTPRequestTypePUT:
-            capability = [self getCapabilityForType:@"delete"];
-            break;
-        case SPHTTPRequestTypePOST:
             capability = [self getCapabilityForType:@"update"];
             break;
-        case SPHTTPRequestTypeDELETE:
+        case SPHTTPRequestTypePOST:
             capability = [self getCapabilityForType:@"create"];
+            break;
+        case SPHTTPRequestTypeDELETE:
+            capability = [self getCapabilityForType:@"delete"];
             break;
         default:
             break;

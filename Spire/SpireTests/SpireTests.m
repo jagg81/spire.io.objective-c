@@ -100,11 +100,15 @@
     [self handleResponse:response];
 }
 
-- (void)channelsDidFinishWithResponse:(SPHTTPResponse *)response
+- (void)spireChannelsDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];
+}
+
+- (void)spireCreateChannelDidFinishWithResponse:(SPHTTPResponse *)response
 {
     [self handleResponse:response];    
 }
-
 
 - (void)testDiscover
 {
@@ -153,6 +157,18 @@
     STAssertNotNil(_spire.session.channels, @"Channels object is missing");
     STAssertNotNil([_spire.session.channels getUrl], @"Channels url is missing");
     STAssertNotNil([_spire.session.channels getCapability], @"Channels capability is missing");
+}
+
+- (void)testCreateChannel
+{
+    NSString *channelName = @"someFooChannel";
+    SPChannel *channel;
+    
+    [_spire createChannelWithName:channelName];
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to create channel");
+    channel = [_spire.session.channels getChannel:channelName];
+    STAssertNotNil(channel, @"Channel object is missing");
+    STAssertTrue([channelName isEqualToString:[channel getName]], @"Channel name is not the same");
 }
 
 

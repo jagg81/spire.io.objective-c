@@ -52,12 +52,26 @@
     [_channels doGet];
 }
 
+- (void)createChannelWithName:(NSString *)name
+{
+    _channels.delegate = self;
+    [_channels createChannel:name];
+}
+
 # pragma mark - SPHTTPChannelsDelegate
 - (void)getChannelsDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(retrieveChannelsDidFinishWithResponse:)] ) {
-        [_delegate retrieveChannelsDidFinishWithResponse:response];
+    if (_delegate && [_delegate respondsToSelector:@selector(sessionRetrieveChannelsDidFinishWithResponse:)] ) {
+        [_delegate sessionRetrieveChannelsDidFinishWithResponse:response];
     }
 }
+
+- (void)createChannelDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(sessionCreateChannelDidFinishWithResponse:)] ) {
+        [_delegate sessionCreateChannelDidFinishWithResponse:response];
+    }
+}
+
 
 @end

@@ -46,7 +46,7 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 
 // wrapper for resources
 - (void)channels;
-- (void)createChannel;
+- (void)createChannelWithName:(NSString *)name;
 - (void)subscriptions;
 - (void)subscribe:(NSString *)subscriptionName channels:(NSArray *)channels;
 - (void)subscribe:(NSString *)subscriptionName, ...;
@@ -64,8 +64,8 @@ static NSString* SPIRE_URL = @"http://localhost:1337";
 - (void)deleteAccountDidFinishWithResponse:(SPHTTPResponse *)response;
 
 // wrapper for resources
-- (void)channelsDidFinishWithResponse:(SPHTTPResponse *)response;
-- (void)createChannelDidFinishWithResponse:(SPHTTPResponse *)response;
-- (void)subscriptionsDidFinishWithResponse:(SPHTTPResponse *)response;
-- (void)subscribeDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)spireChannelsDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)spireCreateChannelDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)spireSubscriptionsDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)spireSubscribeDidFinishWithResponse:(SPHTTPResponse *)response;
 @end

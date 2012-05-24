@@ -97,7 +97,7 @@ NSString* SP_API_VERSION = @"1.0";
         // throw an exception handle by caller
         @throw [NSException exceptionWithName:@"SpireException" reason:@"discover failed" userInfo:nil];
     }
-        
+    
     SPResourceModel *apiDescription = [response parseResponseWithInfo:nil];
     [self setApiDescriptionModel:apiDescription];
     
@@ -152,7 +152,7 @@ NSString* SP_API_VERSION = @"1.0";
     NSString *contentType = [[_apiDescription getSchema] getMediaType:@"account"];
     NSString *accept = [[_apiDescription getSchema] getMediaType:@"session"];
     requestData.headers = [NSDictionary dictionaryWithObjectsAndKeys:   accept, @"Accept", 
-                           contentType, @"Content-Type", nil];
+                                                                        contentType, @"Content-Type", nil];
     requestData.body = data;
     
     SPHTTPRequest *request = [SPHTTPRequestFactory createHTTPRequest];

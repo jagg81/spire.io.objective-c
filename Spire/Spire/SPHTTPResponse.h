@@ -42,9 +42,10 @@
  * this could be overriden by subclasses
  */
 - (void)handleResponse:(NSURLRequest *)request response:(NSHTTPURLResponse *)response error:(NSError *)error andResponseData:(id)data;
+- (id)parseResponseWithParser:(Class)parser andInfo:(id)info;
 - (id)parseResponseWithInfo:(id)info;
 - (BOOL)isSuccessStatusCode;
-
+- (NSInteger)statusCode;
 
 @end
 

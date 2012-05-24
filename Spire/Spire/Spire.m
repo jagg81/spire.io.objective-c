@@ -187,6 +187,12 @@
     [_session retrieveChannels];
 }
 
+- (void)createChannelWithName:(NSString *)name
+{
+    _session.delegate = self;
+    [_session createChannelWithName:name];    
+}
+
 
 # pragma mark - SPHTTPResponseOperationDelegate
 - (void)operationDidFinishWithResponse:(SPHTTPResponse *)response;
@@ -257,11 +263,19 @@
 }
 
 # pragma mark - SPSessionDelegate
-- (void)retrieveChannelsDidFinishWithResponse:(SPHTTPResponse *)response
+- (void)sessionRetrieveChannelsDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(channelsDidFinishWithResponse:)] ) {
-        [_delegate channelsDidFinishWithResponse:response];
+    if (_delegate && [_delegate respondsToSelector:@selector(spireChannelsDidFinishWithResponse:)] ) {
+        [_delegate spireChannelsDidFinishWithResponse:response];
     }
 }
+
+- (void)sessionCreateChannelDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(spireCreateChannelDidFinishWithResponse:)] ) {
+        [_delegate spireCreateChannelDidFinishWithResponse:response];
+    }
+}
+
 
 @end

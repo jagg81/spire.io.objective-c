@@ -23,13 +23,13 @@
 @property(nonatomic, readonly) SPSubscriptions *subscriptions;
 
 - (void)retrieveChannels;
-
+- (void)createChannelWithName:(NSString *)name;
 @end
 
 
 @protocol SPSessionDelegate <NSObject>
 
 @optional
-- (void)retrieveChannelsDidFinishWithResponse:(SPHTTPResponse *)response;
-
+- (void)sessionRetrieveChannelsDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)sessionCreateChannelDidFinishWithResponse:(SPHTTPResponse *)response;
 @end

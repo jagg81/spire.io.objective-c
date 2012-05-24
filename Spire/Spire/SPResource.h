@@ -10,6 +10,7 @@
 #import "SPResourceModel.h"
 #import "SPResourceDelegate.h"
 
+@protocol SPResourceCollectionProtocol;
 @interface SPResource : NSObject<SPResourceDelegate>{
     SPResourceModel *_model;
     SPApiSchemaModel *_schema;
@@ -25,7 +26,7 @@
  */
 - (void)initialize;
 - (void)updateModel:(id)rawModel;
-- (NSString *)getResourceName;
++ (NSString *)resourceName;
 
 /*
  *  Constructors
@@ -33,7 +34,7 @@
 - (id)initWithResourceModel:(SPResourceModel *)model apiSchemaModel:(SPApiSchemaModel *)schema;
 - (id)initWithRawResourceModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema;
 - (SPResourceModel *)getResourceModel:(NSString *)resourceName;
-+ (SPResource *)createResourceWithRawModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema;
++ (id)createResourceWithRawModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema;
 
 /*
  *  Properties
@@ -52,6 +53,14 @@
 - (void)doGetWithParameters:(NSDictionary *)params andHeaders:(NSDictionary *)headers;
 - (void)doUpdate;
 - (void)doDelete;
-- (void)doPost;
+- (void)doPost:(NSDictionary *)content;
+- (void)doPostWithContent:(NSDictionary *)content andHeaders:(NSDictionary *)headers;
+
+@end
+
+@protocol SPResourceCollectionProtocol <NSObject>
+
+@required
+- (void)resourceCollectionAddModel:(id)rawModel;
 
 @end
