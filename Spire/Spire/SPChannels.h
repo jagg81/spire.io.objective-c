@@ -14,13 +14,14 @@
 }
 
 - (SPChannel *)getChannel:(NSString *)name;
+- (void)addChannel:(SPChannel *)channel;
 - (void)createChannel:(NSString *)name;
 
 @end
 
 @protocol SPChannelsDelegate <NSObject>
 
-@optional
+@required
 - (void)getChannelsDidFinishWithResponse:(SPHTTPResponse *)response;
 - (void)createChannelDidFinishWithResponse:(SPHTTPResponse *)response;
 

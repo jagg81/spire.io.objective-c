@@ -8,7 +8,7 @@
 
 #import "SPResource.h"
 
-@interface SPChannel : SPResource<SPHTTPResponseParser>{
+@interface SPChannel : SPResource{
     
 }
 

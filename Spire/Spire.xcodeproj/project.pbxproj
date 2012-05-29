@@ -74,6 +74,8 @@
 		CF6975D7154B775300D7E4B4 /* SPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975D5154B775300D7E4B4 /* SPHTTPResponse.m */; };
 		CF6975DA154B79EF00D7E4B4 /* SPHTTPRequestData.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6975D8154B79EE00D7E4B4 /* SPHTTPRequestData.h */; };
 		CF6975DB154B79EF00D7E4B4 /* SPHTTPRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6975D9154B79EE00D7E4B4 /* SPHTTPRequestData.m */; };
+		CF6E2E091570648D000A217B /* SPOperationCreateChannels.h in Headers */ = {isa = PBXBuildFile; fileRef = CF6E2E071570648B000A217B /* SPOperationCreateChannels.h */; };
+		CF6E2E0A1570648D000A217B /* SPOperationCreateChannels.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6E2E081570648C000A217B /* SPOperationCreateChannels.m */; };
 		CFA7A1341561B28000D83426 /* SPOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA7A1321561B28000D83426 /* SPOperation.h */; };
 		CFA7A1351561B28000D83426 /* SPOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA7A1331561B28000D83426 /* SPOperation.m */; };
 		CFA9056415585F170022EEE0 /* AFHTTPRequestOperationLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA9056215585F170022EEE0 /* AFHTTPRequestOperationLogger.h */; };
@@ -167,6 +169,8 @@
 		CF6975D5154B775300D7E4B4 /* SPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPResponse.m; sourceTree = "<group>"; };
 		CF6975D8154B79EE00D7E4B4 /* SPHTTPRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPRequestData.h; sourceTree = "<group>"; };
 		CF6975D9154B79EE00D7E4B4 /* SPHTTPRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPRequestData.m; sourceTree = "<group>"; };
+		CF6E2E071570648B000A217B /* SPOperationCreateChannels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOperationCreateChannels.h; sourceTree = "<group>"; };
+		CF6E2E081570648C000A217B /* SPOperationCreateChannels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOperationCreateChannels.m; sourceTree = "<group>"; };
 		CFA7A1321561B28000D83426 /* SPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPOperation.h; sourceTree = "<group>"; };
 		CFA7A1331561B28000D83426 /* SPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPOperation.m; sourceTree = "<group>"; };
 		CFA9056215585F170022EEE0 /* AFHTTPRequestOperationLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationLogger.h; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				CF6975C6154B691A00D7E4B4 /* SPGlobal.h */,
 				CFA7A1321561B28000D83426 /* SPOperation.h */,
 				CFA7A1331561B28000D83426 /* SPOperation.m */,
+				CF6E2E071570648B000A217B /* SPOperationCreateChannels.h */,
+				CF6E2E081570648C000A217B /* SPOperationCreateChannels.m */,
 				CF69759F154B221B00D7E4B4 /* Api */,
 				CF6975A4154B22E000D7E4B4 /* Request */,
 				CF69757B1547933300D7E4B4 /* Supporting Files */,
@@ -455,6 +461,7 @@
 				CFA7A1341561B28000D83426 /* SPOperation.h in Headers */,
 				CF18B74D156726270059E168 /* SPResourceModel.h in Headers */,
 				CF18B750156C0F210059E168 /* SPResourceDelegate.h in Headers */,
+				CF6E2E091570648D000A217B /* SPOperationCreateChannels.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +594,7 @@
 				CFA9056515585F170022EEE0 /* AFHTTPRequestOperationLogger.m in Sources */,
 				CFA7A1351561B28000D83426 /* SPOperation.m in Sources */,
 				CF18B74E156726270059E168 /* SPResourceModel.m in Sources */,
+				CF6E2E0A1570648D000A217B /* SPOperationCreateChannels.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

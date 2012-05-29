@@ -77,7 +77,7 @@
         [_operation start];
     }
     // release operation??
-    SP_RELEASE_SAFELY(_operation);
+//    SP_RELEASE_SAFELY(_operation);
 }
 
 - (BOOL)hasNextOperation
@@ -193,18 +193,37 @@
     [_session createChannelWithName:name];    
 }
 
+- (void)subscriptions
+{
+    _session.delegate = self;
+    [_session retrieveSubscriptions];    
+}
+
+- (void)subscribe:(NSString *)subscriptionName channels:(NSArray *)channels
+{
+    _session.delegate = self;
+    [_session createSubscriptionWithName:subscriptionName forChannels:channels withExpiration:nil];
+}
+
 
 # pragma mark - SPHTTPResponseOperationDelegate
 - (void)operationDidFinishWithResponse:(SPHTTPResponse *)response;
 {
-    if ([self hasNextOperation]) {
+    if (_operation) {
+        if ([_operation isReady]) {
+            [_operation start];
+            return;
+        }
+        else if ([_operation isExecuting]) {
+            [_operation finish];
+            SP_RELEASE_SAFELY(_operation);
+        }
         if ([response isSuccessStatusCode]) {
-            [self performNextOperation];
+//            [self performNextOperation];
         }else{
             // throw an exception handle by caller
             @throw [NSException exceptionWithName:@"SpireException" reason:@"Register account failed" userInfo:nil];
         }
-        return;
     }
     
     // do any custom initialization here
@@ -274,6 +293,20 @@
 {
     if (_delegate && [_delegate respondsToSelector:@selector(spireCreateChannelDidFinishWithResponse:)] ) {
         [_delegate spireCreateChannelDidFinishWithResponse:response];
+    }
+}
+
+- (void)sessionRetrieveSubscriptionDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(spireSubscriptionsDidFinishWithResponse:)] ) {
+        [_delegate spireSubscriptionsDidFinishWithResponse:response];
+    }
+}
+
+- (void)sessionCreateSubscriptionDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(spireSubscribeDidFinishWithResponse:)] ) {
+        [_delegate spireSubscribeDidFinishWithResponse:response];
     }
 }
 

@@ -9,6 +9,22 @@
 #import "SPResource.h"
 #import "SPSubscription.h"
 
-@interface SPSubscriptions : SPResource
+@interface SPSubscriptions : SPResource<SPResourceCollectionProtocol>{
+    NSMutableDictionary *_subscriptionCollection;
+}
+
+- (SPSubscription *)getSubscription:(NSString *)name;
+- (void)addSubscription:(SPSubscription *)subscription;
+
+- (void)createSubscription:(NSString *)name forChannel:(NSString *)channel;
+- (void)createSubscription:(NSString *)name forChannels:(NSArray *)channels withExpiration:(NSNumber *)expiration;
+
+@end
+
+@protocol SPSubscritionDelegate <NSObject>
+
+@required
+- (void)getSubscriptionDidFinishWithResponse:(SPHTTPResponse *)response;
+- (void)createSubscriptionDidFinishWithRespose:(SPHTTPResponse *)response;
 
 @end

@@ -18,9 +18,9 @@
 }
 
 # pragma mark - SPHTTPResponseParser
-+ (id)parseHTTPResponse:(SPHTTPResponse *)response withInfo:(id)info
-{
-    return [self createResourceWithRawModel:response.responseData apiSchemaModel:info];
-}
+//+ (id)parseHTTPResponse:(SPHTTPResponse *)response withInfo:(id)info
+//{
+//    return [self createResourceWithRawModel:response.responseData apiSchemaModel:info];
+//}
 
 @end

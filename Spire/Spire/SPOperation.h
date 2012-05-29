@@ -30,7 +30,11 @@ typedef unsigned short SPOperationState;
     SPOperationState _state;
 }
 
+@property(nonatomic, assign) id delegate;
+
 - (id)initWithOperationData:(NSDictionary *)data delegate:(id)delegate andSelector:(SEL)selector;
+- (void)setState:(SPOperationState)state;
+- (void)finish;
 
 @end
 
@@ -39,6 +43,7 @@ typedef unsigned short SPOperationState;
 
 @required
 - (void)operationDidFinishWithResponse:(SPHTTPResponse *)response;
+//- (void)operationDidFinishWithResponse:(SPHTTPResponse *)response operation:(SPOperation *)operation;
 - (void)registerOperation:(SPOperation *)operation;
 - (void)performNextOperation;
 - (BOOL)hasNextOperation;

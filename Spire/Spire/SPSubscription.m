@@ -10,4 +10,17 @@
 
 @implementation SPSubscription
 
+# pragma mark - Overriden methods from super class [SPResource]
+
++ (NSString *)resourceName
+{
+    return [NSString stringWithString:@"subscription"];
+}
+
+# pragma mark - SPHTTPResponseParser
+//+ (id)parseHTTPResponse:(SPHTTPResponse *)response withInfo:(id)info
+//{
+//    return [self createResourceWithRawModel:response.responseData apiSchemaModel:info];
+//}
+
 @end

@@ -11,7 +11,7 @@
 #import "SPResourceDelegate.h"
 
 @protocol SPResourceCollectionProtocol;
-@interface SPResource : NSObject<SPResourceDelegate>{
+@interface SPResource : NSObject<SPResourceDelegate, SPHTTPResponseParser>{
     SPResourceModel *_model;
     SPApiSchemaModel *_schema;
     SPResourceCapabilityModel *_capabilities;

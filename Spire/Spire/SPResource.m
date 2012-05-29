@@ -131,7 +131,7 @@
 {
     NSLog(@"GET Resource");
     SPHTTPResponse *httpResponse = response;
-    if (!!httpResponse || ![httpResponse isSuccessStatusCode]) {
+    if (!httpResponse || ![httpResponse isSuccessStatusCode]) {
         NSLog(@"Error GETing Resource");
         return;
     }
@@ -142,7 +142,7 @@
 {
     NSLog(@"UPDATE Resource");
     SPHTTPResponse *httpResponse = response;
-    if (!!httpResponse || ![httpResponse isSuccessStatusCode]) {
+    if (!httpResponse || ![httpResponse isSuccessStatusCode]) {
         NSLog(@"Error UPDATing Resource");
         return;
     }
@@ -153,7 +153,7 @@
 {
     NSLog(@"DELETE Resource");
     SPHTTPResponse *httpResponse = response;
-    if (!!httpResponse || ![httpResponse isSuccessStatusCode]) {
+    if (!httpResponse || ![httpResponse isSuccessStatusCode]) {
         NSLog(@"Error DELETing Resource");
         return;
     }

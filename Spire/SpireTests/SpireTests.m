@@ -107,7 +107,17 @@
 
 - (void)spireCreateChannelDidFinishWithResponse:(SPHTTPResponse *)response
 {
-    [self handleResponse:response];    
+    [self handleResponse:response];
+}
+
+- (void)spireSubscriptionsDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];
+}
+
+- (void)spireSubscribeDidFinishWithResponse:(SPHTTPResponse *)response
+{
+    [self handleResponse:response];
 }
 
 - (void)testDiscover
@@ -144,7 +154,7 @@
     Spire *spire = [[Spire alloc] init];
     spire.delegate = self;
     [spire loginWithEmail:_email andPassword:_password];
-    STAssertTrue([self waitForCompletion:30.0], @"Failed to start session with secret key");
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to login with email and password");
     STAssertNotNil(spire.session, @"Session object is missing");
     STAssertNotNil (spire.session.account, @"Account object is missing");
     STAssertTrue([_secret isEqualToString:[spire.session.account getSecret]], @"Account secret is not the same");
@@ -153,7 +163,7 @@
 - (void)testChannels
 {
     [_spire channels];
-    STAssertTrue([self waitForCompletion:30.0], @"Failed to start session with secret key");
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to get Channels");
     STAssertNotNil(_spire.session.channels, @"Channels object is missing");
     STAssertNotNil([_spire.session.channels getUrl], @"Channels url is missing");
     STAssertNotNil([_spire.session.channels getCapability], @"Channels capability is missing");
@@ -171,5 +181,26 @@
     STAssertTrue([channelName isEqualToString:[channel getName]], @"Channel name is not the same");
 }
 
+- (void)testSubscriptions
+{
+    [_spire subscriptions];
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to get Subscriptions");
+    STAssertNotNil(_spire.session.subscriptions, @"Subscriptions object is missing");
+    STAssertNotNil([_spire.session.subscriptions getUrl], @"Subscriptions url is missing");
+    STAssertNotNil([_spire.session.subscriptions getCapability], @"Subscriptions capability is missing");
+}
+
+- (void)testSubscribe
+{
+    NSString *subscriptionName = @"someFooSubscription";
+    NSArray *channels = [NSArray arrayWithObjects:@"barChannel1", @"barChannel2", @"barChannel3", nil];
+    SPSubscription *subscription;
+    
+    [_spire subscribe:subscriptionName channels:channels];
+    STAssertTrue([self waitForCompletion:30.0], @"Failed to create subscription");
+    subscription = [_spire.session.subscriptions getSubscription:subscriptionName];
+    STAssertNotNil(subscription, @"Channel object is missing");
+    STAssertTrue([subscriptionName isEqualToString:[subscription getName]], @"Subscription name is not the same");
+}
 
 @end
