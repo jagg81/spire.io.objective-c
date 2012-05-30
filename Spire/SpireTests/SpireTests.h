@@ -6,18 +6,11 @@
 //  Copyright (c) 2012 Spire.io. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "SpireClient.h"
+//#import <SenTestingKit/SenTestingKit.h>
+#import "SPSpireTestBase.h"
 
-@interface SpireTests : SenTestCase{
-    Spire *_spire;
-    BOOL _done;
-    NSString *_email;
-    NSString *_password;
-    
-    NSString *_secret;
-    
-    SPHTTPResponse *_response;
+@interface SpireTests : SPSpireTestBase{
+
 }
 
 @end

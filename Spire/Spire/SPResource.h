@@ -31,6 +31,8 @@
 /*
  *  Constructors
  */
+
+// Base Constructor (this one gets called by other constructor as well as Class Factory Builder)
 - (id)initWithResourceModel:(SPResourceModel *)model apiSchemaModel:(SPApiSchemaModel *)schema;
 - (id)initWithRawResourceModel:(id)rawModel apiSchemaModel:(SPApiSchemaModel *)schema;
 - (SPResourceModel *)getResourceModel:(NSString *)resourceName;

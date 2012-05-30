@@ -7,9 +7,18 @@
 //
 
 #import "SPResource.h"
+#import "SPEvent.h"
 
 @interface SPChannel : SPResource{
     
 }
+
+- (void)publish:(NSString *)content;
+@end
+
+
+@protocol SPChannelDelegate <NSObject>
+@required
+- (void)publishDidFinishWithResponse:(SPHTTPResponse *)response;
 
 @end
